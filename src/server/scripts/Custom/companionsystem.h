@@ -1,0 +1,4 @@
+#ifndef COMPANION_SYSTEM_H
+#define COMPANION_SYSTEM_H
+
+#endif // COMPANION_SYSTEM_H
