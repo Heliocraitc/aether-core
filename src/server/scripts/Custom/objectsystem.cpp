@@ -9,6 +9,7 @@
 #include "objectsystem.h"
 #include "Language.h"
 #include "DatabaseFunctions.h"
+#include "ObjectAccessor.h"
 
 static const WorldLocation* gtargetpos;
 static uint32 gitemId = 0;
