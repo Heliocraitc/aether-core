@@ -10,6 +10,10 @@
 #include "Language.h"
 #include "DatabaseFunctions.h"
 #include "ObjectAccessor.h"
+#include "ScriptMgr.h"
+#include "GameEventMgr.h"
+#include "PoolMgr.h"
+#include "Opcodes.h"
 
 static const WorldLocation* gtargetpos;
 static uint32 gitemId = 0;
