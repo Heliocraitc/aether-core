@@ -120,7 +120,7 @@ uint32 DatabaseFunctions::GetDB_gameobject_playerguid(uint32 gameobjectGUID)
     return playerGUID;
 }
 
-void DatabaseFunctions::SetDB_gameobject_guildguid(uint32 gameobjectGUID, uint32 guildGuid)
+void DatabaseFunctions::SetDB_gameobject_guildid(uint32 gameobjectGUID, uint32 guildGuid)
  {
      WorldDatabase.PExecute("UPDATE gameobject SET guild_guid = %u WHERE guid = %u;", guildGuid, gameobjectGUID;
  }
