@@ -7,7 +7,7 @@ static uint32 selected_object; // GUID of selected object.
 
 enum directions
 {
-    LEFT,
+    LEFT = 1,
     RIGHT,
     UP,
     DOWN,
@@ -35,16 +35,15 @@ static void ChangeOwner(uint32 gameobject, uint32 recipient);
 };
 
 enum {
-SELECT_OBJECT,
+SELECT_OBJECT = 1,
 PREVIOUS_OBJECT,
 NEXT_OBJECT,
-SELECT_THIS_OBJECT,
+POINT_SELECT_OBJECT,
 PICKUP_OBJECT,
 EDIT_OBJECT_POSITION,
 CHANGE_OBJECT_OWNER,
 LIST_ALL_OBJECTS
 };
-/* This is no longer needed in the current method, so I'm going to comment them out. - Antodan
 
 enum aether_item_objects_orc
 {
@@ -74,7 +73,6 @@ enum aether_objects_human
     HU_WOOD_CHAIR_OBJECT,
     HU_CRATE1_OBJECT
 };
-*/
 
 /*Destructible Buildings*/
 
