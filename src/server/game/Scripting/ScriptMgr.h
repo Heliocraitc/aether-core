@@ -195,9 +195,9 @@ class SpellScriptLoader : public ScriptObject
 {
     protected:
 
-        SpellScriptLoader(const char* name);
-
     public:
+
+        SpellScriptLoader(const char* name);
 
         bool IsDatabaseBound() const final { return true; }
 
