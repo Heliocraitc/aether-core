@@ -3,6 +3,7 @@ using namespace std;
 #include "Player.h"
 #include "menustone.h"
 #include <string>
+#include objectsystem.cpp
 
 class cs_menustone : public ItemScript
 {
