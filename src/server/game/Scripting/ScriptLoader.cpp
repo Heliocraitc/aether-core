@@ -1448,22 +1448,22 @@ void AddBattlegroundScripts()
     void AddSC_CS_Transmogrification();
 
     /*Character Login*/
-    void AddSC_aevum_login();
+    void AddSC_aether_login();
 
     /*Death System*/
-    void AddSC_aevum_deathsystem();
+    void AddSC_aether_deathsystem();
 
     /*Guild System*/
-    void AddSC_aevum_groupsystem();
-    void AddSC_aevum_guildsystem();
+    void AddSC_aether_groupsystem();
+    void AddSC_aether_guildsystem();
 
     /*Build System*/
-    void AddSC_aevum_objects();
+    void AddSC_aether_objects();
 
     /*PVP System*/
 
     /*Misc*/
-    void AddSC_aevum_misc_npcs();
+    void AddSC_aether_misc_npcs();
     void AddSC_gps_commandscript();
     void AddSC_cs_itemrequest();
     void AddSC_cs_scaler();
@@ -1483,22 +1483,22 @@ void AddCustomScripts()
     AddSC_CS_Transmogrification();
 
     /*Character Login*/
-    AddSC_aevum_login();
+    AddSC_aether_login();
 
     /*Death System*/
-    AddSC_aevum_deathsystem();
+    AddSC_aether_deathsystem();
 
     /*Guild System*/
-    AddSC_aevum_groupsystem();
-    AddSC_aevum_guildsystem();
+    AddSC_aether_groupsystem();
+    AddSC_aether_guildsystem();
 
     /*Build System*/
-    AddSC_aevum_objects();
+    AddSC_aether_objects();
 
     /*PVP System*/
 
     /*Misc*/
-    AddSC_aevum_misc_npcs();
+    AddSC_aether_misc_npcs();
     AddSC_gps_commandscript();
     AddSC_cs_itemrequest();
     AddSC_cs_scaler();

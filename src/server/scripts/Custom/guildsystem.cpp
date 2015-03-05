@@ -27,12 +27,12 @@ public:
     {
         uint32 guildid = player->GetGuildId();
         /* Getting keypoint number from the database. */
-        QueryResult result = CharacterDatabase.PQuery("SELECT COUNT(*) FROM aevum_guild_keypoints WHERE guildid = %u;", guildid);
+        QueryResult result = CharacterDatabase.PQuery("SELECT COUNT(*) FROM aether_guild_keypoints WHERE guildid = %u;", guildid);
         Field * fields = result->Fetch();
         uint8 keypoints = fields[0].GetUInt8();
         uint8 maxkeypoints = 2;
 
-        QueryResult result2 = CharacterDatabase.PQuery("SELECT faction FROM aevum_guild_levels WHERE guid = %u;", guildid);
+        QueryResult result2 = CharacterDatabase.PQuery("SELECT faction FROM aether_guild_levels WHERE guid = %u;", guildid);
         Field * fields2 = result2->Fetch();
         uint8 faction = fields2[0].GetUInt8();
         //if((player->IsWithinDist(gobject, 100.0, true)) && (gobject->GetEntry)){
@@ -104,7 +104,7 @@ public:
 
 
 //player->FindNearestGameObject(90000, 0.1);
-            CharacterDatabase.PExecute("INSERT INTO aevum_guild_keypoints (guildid, guid) VALUES (%u, %u);", guildid, guidLow);
+            CharacterDatabase.PExecute("INSERT INTO aether_guild_keypoints (guildid, guid) VALUES (%u, %u);", guildid, guidLow);
             uint32 guid = object->GetGUID();
         }
         else
@@ -138,7 +138,7 @@ public:
         {
         case GOSSIP_ACTION_INFO_DEF+1:
         {
-            QueryResult result = CharacterDatabase.PQuery("SELECT guildid FROM aevum_guild_keypoints WHERE guid = %u;", object->GetGUID());
+            QueryResult result = CharacterDatabase.PQuery("SELECT guildid FROM aether_guild_keypoints WHERE guid = %u;", object->GetGUID());
             Field * fields = result->Fetch();
             uint64 guildid = fields[0].GetUInt8();
 
@@ -150,7 +150,7 @@ public:
         }
         case GOSSIP_ACTION_INFO_DEF+2:
         {
-            CharacterDatabase.PExecute("DELETE FROM aevum_guild_keypoints WHERE guid = %u", object->GetGUID());
+            CharacterDatabase.PExecute("DELETE FROM aether_guild_keypoints WHERE guid = %u", object->GetGUID());
             uint32 objectId = 90004;
 
             if (!objectId)
@@ -198,11 +198,11 @@ public:
             /// @todo is it really necessary to add both the real and DB table guid here ?
             sObjectMgr->AddGameobjectToGrid(guidLow, sObjectMgr->GetGOData(guidLow));
 
-            QueryResult result = CharacterDatabase.PQuery("SELECT guildid FROM aevum_guild_keypoints WHERE guid = %u;", object->GetGUID());
+            QueryResult result = CharacterDatabase.PQuery("SELECT guildid FROM aether_guild_keypoints WHERE guid = %u;", object->GetGUID());
             Field * fields = result->Fetch();
             uint64 guildid = fields[0].GetUInt8();
 
-            QueryResult result2 = CharacterDatabase.PQuery("SELECT COUNT(*) FROM aevum_guild_keypoints WHERE guildid = %u;", guildid);
+            QueryResult result2 = CharacterDatabase.PQuery("SELECT COUNT(*) FROM aether_guild_keypoints WHERE guildid = %u;", guildid);
             Field * fields2 = result2->Fetch();
             uint64 keypoints = fields[0].GetUInt8();
 
@@ -217,7 +217,7 @@ public:
     } */
 };
 
-void AddSC_aevum_guildsystem()
+void AddSC_aether_guildsystem()
 {
     new cs_keypointitem;
     new cs_keypoint;

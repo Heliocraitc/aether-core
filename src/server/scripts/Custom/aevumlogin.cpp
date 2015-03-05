@@ -16,7 +16,7 @@ public:
             player->CastSpell(player, 63706, true);
             player->CastSpell(player, 63707, true);
 
-            //Channel("Aevum OOC", Channel->GetChannelId(), 0)->JoinChannel(player, Channel->GetPassword()); Needs an addon for force joining
+            //Channel("aether OOC", Channel->GetChannelId(), 0)->JoinChannel(player, Channel->GetPassword()); Needs an addon for force joining
 
             switch(player->getRace())
             {
@@ -64,7 +64,6 @@ public:
         player->AddAura(54844, playerUnit);
         player->Update(1);
         player->RemoveAura(54844, player->GetGUID(),0, AURA_REMOVE_BY_DEFAULT);
-        player->SetAcceptWhispers(true);
     }
 
     // Called when a player switches to a new zone
@@ -95,7 +94,7 @@ public:
 
 };
 
-void AddSC_aevum_login()
+void AddSC_aether_login()
 {
     new cs_first_login;
     new cs_characterlogin;

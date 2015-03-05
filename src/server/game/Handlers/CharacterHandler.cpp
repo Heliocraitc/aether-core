@@ -983,7 +983,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 
         pCurrChar->SetMovement(MOVE_WATER_WALK);
     /*
-    Aevum code block starts here
+    aether code block starts here
     EDITED BY: HELIOCRATIC
     */
 
@@ -1376,7 +1376,7 @@ void WorldSession::HandleAlterAppearance(WorldPacket& recvData)
     }
 
     /*
-    Aevum code block starts here
+    aether code block starts here
     EDITED BY: HELIOCRATIC
     */
     uint32 cost = 0;

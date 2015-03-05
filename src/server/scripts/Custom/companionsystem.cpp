@@ -11,7 +11,7 @@
 
 /* NOTE  - Right now, this script doesn't do any actual work besides
            creating new NPC entries within the database, as well as
-           deleting them when Aevum_Destroy_NPC is called.
+           deleting them when aether_Destroy_NPC is called.
 
            Further work still needs to be done to have the script handle
            NPC spawning within the actual world, player associations,
@@ -71,22 +71,22 @@
 
 // the different class archetypes we currently have
       // melee units       ranged units            caster units        healer units
-enum AEVUM_DB_COMPANION_TYPES // the basic unit type
-    { AEVUM_TYPE_PHYSICAL,  AEVUM_TYPE_MAGICAL };
+enum aether_DB_COMPANION_TYPES // the basic unit type
+    { aether_TYPE_PHYSICAL,  aether_TYPE_MAGICAL };
 
-enum AEVUM_DB_COMPANION_UNITS // the two basic units
+enum aether_DB_COMPANION_UNITS // the two basic units
     { COMPANION_RECRUIT, COMPANION_APPRENTICE };
 
-enum AEVUM_DB_COMPANION_MERCENARY_UNITS // the different mercenary units we currently have
+enum aether_DB_COMPANION_MERCENARY_UNITS // the different mercenary units we currently have
     { MERCENARY_BANDIT,   MERCENARY_HUNTER,       MERCENARY_HEDGEWIZARD, MERCENARY_MENDER,
       MERCENARY_DESERTER, MERCENARY_RANGER,       MERCENARY_SCHOLAR,     MERCENARY_MEDIC,
       MERCENARY_VETERAN,  MERCENARY_SHARPSHOOTER, MERCENARY_THAUMATURGE, MERCENARY_PHYSICIAN };
 
-enum AEVUM_DB_COMPANION_RANKS // these are internal: should reflect Warcraft lore and individual faction hierarchies in the actual game
+enum aether_DB_COMPANION_RANKS // these are internal: should reflect Warcraft lore and individual faction hierarchies in the actual game
     { RANK_CONSCRIPT, RANK_SQUADDIE, RANK_SERGEANT,
       RANK_CAPTAIN,   RANK_COLONEL,  RANK_COMMANDER };
 
-enum AEVUM_DB_COMPANION_IDRANGES // Companion ID ranges within the creature_template database
+enum aether_DB_COMPANION_IDRANGES // Companion ID ranges within the creature_template database
     { DB_FIRST_HUMAN    = 50000, DB_LAST_HUMAN    = 51999,
       DB_FIRST_DWARF    = 52000, DB_LAST_DWARF    = 52999,
       DB_FIRST_GNOME    = 53000, DB_LAST_GNOME    = 53999,
@@ -99,20 +99,20 @@ enum AEVUM_DB_COMPANION_IDRANGES // Companion ID ranges within the creature_temp
       DB_FIRST_UNDEAD   = 64000, DB_LAST_UNDEAD   = 64999,
       DB_FIRST_BLOODELF = 65000, DB_LAST_BLOODELF = 65999 };
 
-enum AEVUM_DB_COMPANION_MODELS // Corresponding models for each race/gender
-    { AEVUM_HUMAN    = 49,    AEVUM_ORC      = 51,   AEVUM_DWARF = 53,   AEVUM_NIGHTELF = 55,
-      AEVUM_UNDEAD   = 57,    AEVUM_TAUREN   = 59,   AEVUM_TROLL = 1478, AEVUM_GNOME    = 1563,
-      AEVUM_BLOODELF = 15476, AEVUM_DRAENEI  = 16125 }; // BE reversed: female = 15475
+enum aether_DB_COMPANION_MODELS // Corresponding models for each race/gender
+    { aether_HUMAN    = 49,    aether_ORC      = 51,   aether_DWARF = 53,   aether_NIGHTELF = 55,
+      aether_UNDEAD   = 57,    aether_TAUREN   = 59,   aether_TROLL = 1478, aether_GNOME    = 1563,
+      aether_BLOODELF = 15476, aether_DRAENEI  = 16125 }; // BE reversed: female = 15475
 
-enum AEVUM_DB_MAINFACTIONS
-    { AEVUM_STORMWIND = 11,   AEVUM_IRONFORGE = 57,  AEVUM_GNOMEREGAN   = 64,   AEVUM_UNDERCITY = 71,
-      AEVUM_DARNASSUS = 79,   AEVUM_ORGRIMMAR = 85,  AEVUM_THUNDERBLUFF = 105,  AEVUM_SENJIN    = 877,
-      AEVUM_EXODAR    = 1639, AEVUM_SILVERMOON = 1603};
+enum aether_DB_MAINFACTIONS
+    { aether_STORMWIND = 11,   aether_IRONFORGE = 57,  aether_GNOMEREGAN   = 64,   aether_UNDERCITY = 71,
+      aether_DARNASSUS = 79,   aether_ORGRIMMAR = 85,  aether_THUNDERBLUFF = 105,  aether_SENJIN    = 877,
+      aether_EXODAR    = 1639, aether_SILVERMOON = 1603};
 
 
 
 /*
-struct Aevum_NPCstats // used later to keep companion stats in memory rather than constantly querying the DB
+struct aether_NPCstats // used later to keep companion stats in memory rather than constantly querying the DB
 {
     uint8 energy_regen    = 0;
     uint8 energy          = 0;
@@ -131,16 +131,16 @@ struct Aevum_NPCstats // used later to keep companion stats in memory rather tha
     uint8 npcExperience   = 0;
 };
 */
-//std::string Aevum_Generate_First_Name(); NYI - possibly could draw on native WoW language files
-//std::string Aevum_Generate_Last_Name();  NYI - same as above
+//std::string aether_Generate_First_Name(); NYI - possibly could draw on native WoW language files
+//std::string aether_Generate_Last_Name();  NYI - same as above
 
-std::string Aevum_DB_Generate_Random_Name( Races race, Gender gender )
+std::string aether_DB_Generate_Random_Name( Races race, Gender gender )
 {
-    QueryResult name_result    = WorldDatabase.PQuery("SELECT name FROM aevum_companion_names WHERE race = '%u' AND type = '%u' ORDER BY RAND();", race, gender);
+    QueryResult name_result    = WorldDatabase.PQuery("SELECT name FROM aether_companion_names WHERE race = '%u' AND type = '%u' ORDER BY RAND();", race, gender);
     Field *     name_field     = name_result->Fetch();
     std::string name           = name_field[0]->GetString();
 
-    QueryResult surname_result = WorldDatabase.PQuery("SELECT name FROM aevum_companion_names WHERE race = '%u' ORDER BY RAND();", race);
+    QueryResult surname_result = WorldDatabase.PQuery("SELECT name FROM aether_companion_names WHERE race = '%u' ORDER BY RAND();", race);
     Field *     surname_field  = surname_result->Fetch();
     std::string surname        = surname_field[0]->GetString();
 
@@ -150,34 +150,34 @@ std::string Aevum_DB_Generate_Random_Name( Races race, Gender gender )
 
 /* fuck all this shit, implement later we xcom now
 
-void Aevum_Generate_Stats( uint8 npcRank, uint8 npcType )
+void aether_Generate_Stats( uint8 npcRank, uint8 npcType )
 {
     // holocaust.cpp
 }
 
-void Aevum_DB_Update_NPC_Name( uint32 npcEntry )
+void aether_DB_Update_NPC_Name( uint32 npcEntry )
 {
     // Has your dwarf companion grown badass enough to deserve the name 'Trollslayer'? Possible feature.
 }
 
-void Aevum_DB_Update_NPC_Stats( uint32 npcEntry, uint8 npcRank, uint8 npcType )
+void aether_DB_Update_NPC_Stats( uint32 npcEntry, uint8 npcRank, uint8 npcType )
 {
     // This function takes care of the leveling logic once an NPC has gained enough experience.
 
     uint8 energy_regen,   energy,          health,   bravery,        reactions;
     uint8 melee_accuracy, ranged_accuracy, strength, magic_strength, magic_accuracy;
 
-    Aevum_Generate_Stats( npcRank, npcType );
+    aether_Generate_Stats( npcRank, npcType );
 }
 
-void Aevum_DB_Initialize_Mercenary_Stats( uint32 npcEntry, uint8 npcType )
+void aether_DB_Initialize_Mercenary_Stats( uint32 npcEntry, uint8 npcType )
 {
     // Mercenary stat generation goes here.
 }
 
 */
 
-void Aevum_DB_Initialize_Companion_Stats( uint32 npcEntry, uint8 npcType )
+void aether_DB_Initialize_Companion_Stats( uint32 npcEntry, uint8 npcType )
 {
     // will be redone later to avoid magic numbers once testing is in progress
     uint8 energy_regen    = urand( 1, 3 );
@@ -193,7 +193,7 @@ void Aevum_DB_Initialize_Companion_Stats( uint32 npcEntry, uint8 npcType )
 
     switch(npcType)
     {
-        case AEVUM_TYPE_MELEE:  health          = urand( 2, 4 );
+        case aether_TYPE_MELEE:  health          = urand( 2, 4 );
                                 reactions       = urand( 1, 3 );
                                 melee_accuracy  = urand( 1, 3 );
                                 ranged_accuracy = urand( 1, 3 );
@@ -202,7 +202,7 @@ void Aevum_DB_Initialize_Companion_Stats( uint32 npcEntry, uint8 npcType )
                                 magic_accuracy  = urand( 0, 1 );
                                 break;
 
-        case AEVUM_TYPE_MAGIC:  health          = urand( 1, 3 );
+        case aether_TYPE_MAGIC:  health          = urand( 1, 3 );
                                 reactions       = urand( 0, 2 );
                                 melee_accuracy  = urand( 0, 2 );
                                 ranged_accuracy = urand( 0, 2 );
@@ -213,11 +213,11 @@ void Aevum_DB_Initialize_Companion_Stats( uint32 npcEntry, uint8 npcType )
     }
 
     // write the generated stats to the chosen NPC's stat entry in the companion stat DB
-    WorldDatabase.PExecute("INSERT INTO 'aevum_companion_stats' ('entry', 'energy_regen', 'energy', 'health', 'bravery', 'reactions', 'melee_accuracy', 'ranged_accuracy', 'strength', 'magic_strength', 'magic_accuracy' )",
+    WorldDatabase.PExecute("INSERT INTO 'aether_companion_stats' ('entry', 'energy_regen', 'energy', 'health', 'bravery', 'reactions', 'melee_accuracy', 'ranged_accuracy', 'strength', 'magic_strength', 'magic_accuracy' )",
                            "VALUES (%u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u);", npcEntry, energy_regen, energy, health, bravery, reactions, melee_accuracy, ranged_accuracy, strength, magic_strength, magic_accuracy );
 }
 
-bool Aevum_DB_Generate_Companion( uint8 race, uint8 gender )
+bool aether_DB_Generate_Companion( uint8 race, uint8 gender )
 {
     uint32 modelid   = 0; // determined by race/gender
     uint16 faction   = 0; // locked
@@ -226,56 +226,56 @@ bool Aevum_DB_Generate_Companion( uint8 race, uint8 gender )
 
     switch(race)
     { // we use the gender value as an offset for picking a modelid
-    case RACE_HUMAN:         modelid = AEVUM_HUMAN    + gender; faction = AEVUM_STORMWIND;
+    case RACE_HUMAN:         modelid = aether_HUMAN    + gender; faction = aether_STORMWIND;
                              min_entry = DB_FIRST_HUMAN;    max_entry = DB_LAST_HUMAN;      break;
-    case RACE_DWARF:         modelid = AEVUM_DWARF    + gender; faction = AEVUM_IRONFORGE;
+    case RACE_DWARF:         modelid = aether_DWARF    + gender; faction = aether_IRONFORGE;
                              min_entry = DB_FIRST_DWARF;    max_entry = DB_LAST_DWARF;      break;
-    case RACE_GNOME:         modelid = AEVUM_GNOME    + gender; faction = AEVUM_GNOMEREGAN;
+    case RACE_GNOME:         modelid = aether_GNOME    + gender; faction = aether_GNOMEREGAN;
                              min_entry = DB_FIRST_GNOME;    max_entry = DB_LAST_GNOME;      break;
-    case RACE_NIGHTELF:      modelid = AEVUM_NIGHTELF + gender; faction = AEVUM_DARNASSUS;
+    case RACE_NIGHTELF:      modelid = aether_NIGHTELF + gender; faction = aether_DARNASSUS;
                              min_entry = DB_FIRST_NIGHTELF; max_entry = DB_LAST_NIGHTELF;   break;
-    case RACE_DRAENEI:       modelid = AEVUM_DRAENEI  + gender; faction = AEVUM_EXODAR;
+    case RACE_DRAENEI:       modelid = aether_DRAENEI  + gender; faction = aether_EXODAR;
                              min_entry = DB_FIRST_DRAENEI;  max_entry = DB_LAST_DRAENEI;    break;
-    case RACE_ORC:           modelid = AEVUM_ORC      + gender; faction = AEVUM_ORGRIMMAR;
+    case RACE_ORC:           modelid = aether_ORC      + gender; faction = aether_ORGRIMMAR;
                              min_entry = DB_FIRST_ORC;      max_entry = DB_LAST_ORC;        break;
-    case RACE_TROLL:         modelid = AEVUM_TROLL    + gender; faction = AEVUM_SENJIN;
+    case RACE_TROLL:         modelid = aether_TROLL    + gender; faction = aether_SENJIN;
                              min_entry = DB_FIRST_TROLL;    max_entry = DB_LAST_TROLL;      break;
-    case RACE_TAUREN:        modelid = AEVUM_TAUREN   + gender; faction = AEVUM_THUNDERBLUFF;
+    case RACE_TAUREN:        modelid = aether_TAUREN   + gender; faction = aether_THUNDERBLUFF;
                              min_entry = DB_FIRST_TAUREN;   max_entry = DB_LAST_TAUREN;     break;
-    case RACE_UNDEAD_PLAYER: modelid = AEVUM_UNDEAD   + gender; faction = AEVUM_UNDERCITY;
+    case RACE_UNDEAD_PLAYER: modelid = aether_UNDEAD   + gender; faction = aether_UNDERCITY;
                              min_entry = DB_FIRST_UNDEAD;   max_entry = DB_LAST_UNDEAD;     break;
-    case RACE_BLOODELF:      modelid = AEVUM_BLOODELF - gender; faction = AEVUM_SILVERMOON;
+    case RACE_BLOODELF:      modelid = aether_BLOODELF - gender; faction = aether_SILVERMOON;
                              min_entry = DB_FIRST_BLOODELF; max_entry = DB_LAST_BLOODELF;   break;
     } // special case: blood elves are gay and have reversed gender model ids
 
-    uint8 unit_class = urand(AEVUM_TYPE_PHYSICAL, AEVUM_TYPE_MAGICAL); // NPC archetype randomization
+    uint8 unit_class = urand(aether_TYPE_PHYSICAL, aether_TYPE_MAGICAL); // NPC archetype randomization
 
     /* Bad News Bears 3.0: The Rewrite */
 
-    std::string name = Aevum_Generate_Random_Name( race, gender ); // we draw on the name DB to get a fitting name for the race
+    std::string name = aether_Generate_Random_Name( race, gender ); // we draw on the name DB to get a fitting name for the race
 
     // add a new NPC to the creature_template DB
     WorldDatabase.PExecute("UPDATE creature_template SET modelid1 = %u, SET name = %s, SET minlevel = 75, SET maxlevel = 75, SET exp 2, ",
                            "SET faction %u, SET unit_class = 1 WHERE entry BETWEEN '%u' AND '%u' LIMIT 1;", modelid, name, faction, min_entry, max_entry);
 
     // TODO: Find a way to query the above SQL statement to get the picked entry back so we can generate stats.
-    Aevum_DB_Initialize_Companion_Stats( npcEntry, type ); // generate random stats and write them to the creature's companion stat database
+    aether_DB_Initialize_Companion_Stats( npcEntry, type ); // generate random stats and write them to the creature's companion stat database
     return true; // assume success like the happy retards we are
 }
 
-void Aevum_DB_Destroy_NPC( uint32 npcEntry )
+void aether_DB_Destroy_NPC( uint32 npcEntry )
 {
     // Called after death and de-spawn: This function just clears the companion entries from the creature and companion stat tables.
     if ( !( npcEntry < DB_FIRST_HUMAN_COMPANION ) || !( npcEntry > DB_LAST_BLOODELF_COMPANION ) )// check that we only delete randomized NPCs
     {
         WorldDatabase.PExecute("DELETE FROM 'creature_template' WHERE entry = '%u';", npcEntry);
-        WorldDatabase.PExecute("DELETE FROM 'aevum_companion_stats' WHERE entry = '%u';", npcEntry);
+        WorldDatabase.PExecute("DELETE FROM 'aether_companion_stats' WHERE entry = '%u';", npcEntry);
     }
 }
 
 /* Recruitment Testing NPC code below */
 
-enum AEVUM_RECRUITER_OPTIONS
+enum aether_RECRUITER_OPTIONS
     { HIRE_HUMAN = 1001, HIRE_DWARF, HIRE_GNOME,  HIRE_NIGHTELF, HIRE_DRAENEI,
       HIRE_ORC,          HIRE_TROLL, HIRE_TAUREN, HIRE_UNDEAD,   HIRE_BLOODELF,
 
@@ -332,7 +332,7 @@ public:
         case HIRE_MALE:
         {
             player->PlayerTalkClass->ClearMenus();
-            Aevum_DB_Generate_Companion(racechoice, genderchoice);
+            aether_DB_Generate_Companion(racechoice, genderchoice);
             player->PlayerTalkClass->SendGossipMenu(90030, creature->GetGUID());
             player->CLOSE_GOSSIP_MENU();
             break;
@@ -402,7 +402,7 @@ public:
     }
 };
 
-void AddSC_aevum_recruiter_npc()
+void AddSC_aether_recruiter_npc()
 {
     new cs_recruiter;
 }

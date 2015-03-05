@@ -1,7 +1,7 @@
 #ifndef GROUP_SYSTEM_H
 #define GROUP_SYSTEM_H
 
-/* Header file for Aevum-WoW 2014 */
+/* Header file for aether-WoW 2014 */
 
 enum guild_level
 {

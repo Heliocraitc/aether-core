@@ -726,7 +726,7 @@ uint32 Unit::DealDamage(Unit* victim, uint32 damage, CleanDamage const* cleanDam
         if (victim->GetTypeId() == TYPEID_PLAYER && victim != this)
             victim->ToPlayer()->UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_TOTAL_DAMAGE_RECEIVED, health);
         /*
-        Aevum code block starts here
+        aether code block starts here
         EDITED BY: HELIOCRATIC
         */
         if((IsPet()|| IsGuardian()||IsSummon()||IsMounted()||IsVehicle()||IsTotem()||isPossessedByPlayer()||((GetTypeId() == TYPEID_PLAYER)&&(victim->GetTypeId() == TYPEID_PLAYER)))&& victim != this){

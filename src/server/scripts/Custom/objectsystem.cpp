@@ -1,5 +1,4 @@
 #include "ScriptPCH.h"
-#include "ScriptMgr.h"
 #include "ScriptedCreature.h"
 #include "ScriptedGossip.h"
 #include "Player.h"
@@ -82,11 +81,11 @@ public:
     }
 };
 
-class cs_aevum_item_object : public ItemScript
+class cs_aether_item_object : public ItemScript
 {
 public:
 
-    cs_aevum_item_object() : ItemScript("cs_aevum_item_object") {}
+    cs_aether_item_object() : ItemScript("cs_aether_item_object") {}
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& targets)
    {
@@ -97,10 +96,10 @@ public:
    }
 };
 
-class cs_aevum_object_place : public SpellScriptLoader
+class cs_aether_object_place : public SpellScriptLoader
 {
 public:
-    cs_aevum_object_place() : SpellScriptLoader("cs_aevum_object_place") {}
+    cs_aether_object_place() : SpellScriptLoader("cs_aether_object_place") {}
 
     class cs_spell_place : public SpellScript
     {
@@ -143,7 +142,7 @@ public:
 
         if(player->GetMapId() == 725) // Prevent players from using Game Objects in the start area.
         {
-            ChatHandler(player->GetSession()).PSendSysMessage("You cannot place objects in Aevum startzone.");
+            ChatHandler(player->GetSession()).PSendSysMessage("You cannot place objects in aether startzone.");
             return;
         }
 
@@ -186,9 +185,9 @@ public:
     }
 };
 
-void AddSC_aevum_objects()
+void AddSC_aether_objects()
 {
-    new cs_aevum_object_place;
-    new cs_aevum_item_object;
+    new cs_aether_object_place;
+    new cs_aether_item_object;
     new cs_object_pickup;
 }

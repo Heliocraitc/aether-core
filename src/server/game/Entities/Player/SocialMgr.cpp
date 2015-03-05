@@ -233,7 +233,7 @@ void SocialMgr::GetFriendInfo(Player* player, uint32 friendGUID, FriendInfo &fri
         else
             friendInfo.Status = FRIEND_STATUS_ONLINE;
         /*
-        Aevum code block starts here
+        aether code block starts here
         EDITED BY: HELIOCRATIC
         */
 

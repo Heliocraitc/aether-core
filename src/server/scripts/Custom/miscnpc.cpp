@@ -525,7 +525,7 @@ public:
     }
 };
 
-void AddSC_aevum_misc_npcs()
+void AddSC_aether_misc_npcs()
 {
     new cs_dalarangatekeeper;
     new cs_cartographer;

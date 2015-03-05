@@ -232,7 +232,7 @@ public:
     }
 };
 
-void AddSC_aevum_groupsystem(){
+void AddSC_aether_groupsystem(){
     new cs_guildclerk_npc;
     new cs_guildclerk_guild;
     new cs_guildclerk_item;

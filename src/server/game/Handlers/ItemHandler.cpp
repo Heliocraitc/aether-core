@@ -908,7 +908,7 @@ void WorldSession::HandleBuyBankSlotOpcode(WorldPacket& recvPacket)
         return;
     }
 /*
-Aevum Code Block
+aether Code Block
 By: HELIOCRATIC
 */
     uint32 price = 0;

@@ -23,11 +23,11 @@ set(scripts_STAT_SRCS
     Custom/deathsystem.cpp
     Custom/objectsystem.cpp
     Custom/scaler.cpp
-    Custom/aevumlogin.cpp
+    Custom/aetherlogin.cpp
     Custom/groupsystem.cpp
     Custom/guildsystem.cpp
     Custom/itemrequest.cpp
-    Custom/aevumcommands.cpp
+    Custom/aethercommands.cpp
     Custom/miscnpc.cpp
     Custom/miscobjects.cpp
     Custom/DatabaseFunctions.cpp

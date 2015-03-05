@@ -81,10 +81,10 @@
 #include "GameObjectAI.h"
 #include "../../../scripts/Custom/Transmogrification.h"
 
-/*Aevum Defines Values */
+/*aether Defines Values */
 #define intialGold 300
 #define afkGold 100
-/*End of Aevum Defines*/
+/*End of aether Defines*/
 
 #define ZONE_UPDATE_INTERVAL (1*IN_MILLISECONDS)
 
@@ -149,11 +149,11 @@ enum CharacterCustomizeFlags
 #define DEATH_EXPIRE_STEP (5*MINUTE)
 #define MAX_DEATH_COUNT 3
 
-/*Aevum timing variables*/
+/*aether timing variables*/
 bool paid = true;
 uint32 start_t = time(NULL) + 1;
 uint32 end_t;
-/*End of Aevum timing variables*/
+/*End of aether timing variables*/
 
 static uint32 copseReclaimDelay[MAX_DEATH_COUNT] = { 30, 60, 120 };
 
@@ -1867,7 +1867,7 @@ void Player::Update(uint32 p_time)
     if (IsHasDelayedTeleport() && IsAlive()) //custom edits
         TeleportTo(m_teleport_dest, m_teleport_options);
     /*
-    Aevum code block starts here
+    aether code block starts here
     EDITED BY: HELIOCRATIC
     */
         if (((GetTotalPlayedTime()*IN_MILLISECONDS)%1800000) == 0)
@@ -2660,10 +2660,10 @@ void Player::RegenerateHealth()
     uint32 curValue = GetHealth();
     uint32 maxValue = GetMaxHealth();
     /*
-    Aevum2 code block starts here
+    aether2 code block starts here
     EDITED BY: HELIOCRATIC
     */
-    if((GetHealthPct() >= 20) && (HasAura(90003) == true)) //custom aevum edits, Removes the Deathstunned aura if you are health above 20% health
+    if((GetHealthPct() >= 20) && (HasAura(90003) == true)) //custom aether edits, Removes the Deathstunned aura if you are health above 20% health
             RemoveAura(90003);
 
     /*Code block ends here*/
@@ -2703,7 +2703,7 @@ void Player::RegenerateHealth()
     addValue += GetTotalAuraModifier(SPELL_AURA_MOD_HEALTH_REGEN_IN_COMBAT);
     addValue += m_baseHealthRegen / 2.5f;
     /*
-    Aevum3 code block starts here
+    aether3 code block starts here
     EDITED BY: HELIOCRATIC
     */
     if (addValue < 0.0f)

@@ -335,7 +335,7 @@ public:
     }
 };
 
-void AddSC_aevum_deathsystem(){
+void AddSC_aether_deathsystem(){
     new cs_deathsystem;
     new cs_deathsystemgossip;
     new cs_deathkill;

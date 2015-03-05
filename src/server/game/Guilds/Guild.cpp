@@ -30,7 +30,7 @@
 #include "Opcodes.h"
 
 #define MAX_GUILD_BANK_TAB_TEXT_LEN 500
-#define EMBLEM_PRICE 20 * SILVER /*Aevum Edit ~ HELIOCRATIC*/
+#define EMBLEM_PRICE 20 * SILVER /*aether Edit ~ HELIOCRATIC*/
 
 std::string _GetGuildEventString(GuildEvents event)
 {
@@ -585,7 +585,7 @@ void Guild::BankTab::SendText(Guild const* guild, WorldSession* session) const
 }
 
  /*
-Aevum code block starts here
+aether code block starts here
 EDITED BY: HELIOCRATIC
 */
 // Member
@@ -680,7 +680,7 @@ bool Guild::Member::LoadFromDB(Field* fields)
     if (!CheckStats())
         return false;
     /*
-    Aevum2 code block starts here
+    aether2 code block starts here
     EDITED BY: HELIOCRATIC
     */
     if (!m_zoneId)

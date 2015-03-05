@@ -4135,7 +4135,7 @@ void Spell::EffectDuel(SpellEffIndex effIndex)
     if (caster->duel || target->duel || !target->GetSocial() || target->GetSocial()->HasIgnore(caster->GetGUIDLow()))
         return;
     /*
-    Aevum code block starts here
+    aether code block starts here
     EDITED BY: ANTODAN
     */
 

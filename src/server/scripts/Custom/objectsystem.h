@@ -46,14 +46,14 @@ LIST_ALL_OBJECTS
 };
 /* This is no longer needed in the current method, so I'm going to comment them out. - Antodan
 
-enum aevum_item_objects_orc
+enum aether_item_objects_orc
 {
     ORC_SMALL_TABLE_ITEM = 73000,
     ORC_SIT_MAT_ITEM,
     ORC_CRATE1_ITEM
 };
 
-enum aevum_objects_orc
+enum aether_objects_orc
 {
     ORC_SMALL_TABLE_OBJECT = 5001000,
     ORC_SIT_MAT_OBJECT,
@@ -61,14 +61,14 @@ enum aevum_objects_orc
 };
 
 
-enum aevum_item_objects_human
+enum aether_item_objects_human
 {
     HU_SMALL_SQUARE_TABLE_ITEM = 73500,
     HU_WOOD_CHAIR_ITEM,
     HU_CRATE1_ITEM
 };
 
-enum aevum_objects_human
+enum aether_objects_human
 {
     HU_SMALL_SQUARE_TABLE_OBJECT = 5001500,
     HU_WOOD_CHAIR_OBJECT,
@@ -78,7 +78,7 @@ enum aevum_objects_human
 
 /*Destructible Buildings*/
 
-enum aevum_item_destruct_objects
+enum aether_item_destruct_objects
 {
 ORC_HUT_ITEM = 72000,
 ORC_KENNAL_ITEM,
@@ -96,10 +96,10 @@ HU_BLACKSMITH_ITEM,
 HU_HOUSE_ITEM,
 HU_TOWNHALL_ITEM,
 HU_BARRACKS_ITEM,
-HU_LUMBERMILL_ITEM,
+HU_LUMBERMILL_ITEM
 };
 
-enum aevum_destruct_objects
+enum aether_destruct_objects
 {
 ORC_HUT_OBJECT = 90010,
 ORC_KENNAL_OBJECT,

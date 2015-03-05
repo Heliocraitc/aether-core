@@ -1,7 +1,7 @@
 #ifndef GUILD_SYSTEM_H
 #define GUILD_SYSTEM_H
 
-/* Header file for Aevum-WoW 2014 */
+/* Header file for aether-WoW 2014 */
 
 
 enum guild_faction
@@ -40,7 +40,8 @@ enum guild_faction
     BILGEWATER_GOBLIN, //31,
     BANDIT_HUMAN, //32,
     ARGENT_HUMAN, //33,
-    SCARLET_HUMAN //34
+    SCARLET_HUMAN, //34
+    BURNING_LEGION //35
 };
 
 #endif

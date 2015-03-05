@@ -45,10 +45,10 @@ enum CharterItemIDs
 enum CharterCosts
 {
     /*
-    Aevum Code Block
+    aether Code Block
     EDITED BY: HELIOCRATIC
     */
-    GUILD_CHARTER_COST                            = 600, //Edited Price for Aevum
+    GUILD_CHARTER_COST                            = 600, //Edited Price for aether
     ARENA_TEAM_CHARTER_2v2_COST                   = 800000,
     ARENA_TEAM_CHARTER_3v3_COST                   = 1200000,
     ARENA_TEAM_CHARTER_5v5_COST                   = 2000000

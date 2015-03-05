@@ -80,7 +80,7 @@ void WorldSession::HandleRepopRequestOpcode(WorldPacket& recvData)
         GetPlayer()->KillPlayer();
     }
     /*
-    Aevum code block starts here
+    aether code block starts here
     EDITED BY: HELIOCRATIC
     */
 
@@ -342,7 +342,7 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recvData)
             continue;
 
     /*
-    Aevum2 code block starts here
+    aether2 code block starts here
     Edited by: HELIOCRATIC
     */
 
@@ -365,7 +365,7 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recvData)
             continue;
 
     /*
-    Aevum3 code block starts here
+    aether3 code block starts here
     Edited by: HELIOCRATIC
     */
 
@@ -816,7 +816,7 @@ void WorldSession::HandleReclaimCorpseOpcode(WorldPacket& recvData)
     if (!corpse)
         return;
     /*
-    Aevum4 code block starts here
+    aether4 code block starts here
     EDITED BY: HELIOCRATIC
     */
 
@@ -853,7 +853,7 @@ void WorldSession::HandleResurrectResponseOpcode(WorldPacket& recvData)
         return;
     }
     /*
-    Aevum5 code block starts here
+    aether5 code block starts here
     EDITED BY: HELIOCRATIC
     */
     if (!GetPlayer()->isResurrectRequestedBy(guid))
