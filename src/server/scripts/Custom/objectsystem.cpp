@@ -171,7 +171,7 @@ public:
         sObjectMgr->AddGameobjectToGrid(guidLow, sObjectMgr->GetGOData(guidLow)); //Actually spawns the new game object.
 
         if(player->GetGuildId())
-           DatabaseFunctions::SetDB_gameobject_guildguid(guidLow, player->GetGuildId());
+           DatabaseFunctions::SetDB_gameobject_guildid(guidLow, player->GetGuildId());
 
         ChatHandler(player->GetSession()).PSendSysMessage("You have successfully placed %s at X:%5.2f, Y:%5.2f, Z:%5.2f, O:%5.2f.", objectInfo->name.c_str(), x, y, z, o);
         player->DestroyItemCount(itemId, -1, true, false); // Removes the item from the player.
