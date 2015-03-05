@@ -17,7 +17,7 @@ static GameObject* gObject = NULL;
 class cs_object_pickup : public SpellScriptLoader
 {
 public:
-    cs_object_pickup : SpellScriptLoader("cs_object_pickup") {}
+    cs_object_pickup() : SpellScriptLoader("cs_object_pickup") {}
 
     class cs_spell_pickup : public SpellScript
     {
