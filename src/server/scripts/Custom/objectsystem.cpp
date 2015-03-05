@@ -53,15 +53,14 @@ public:
         uint64 ownerGuid = object->GetOwnerGUID();
         if (ownerGuid)
         {
-            Unit* owner = ObjectAccessor::GetUnit(player, ownerGuid);
-            if (!owner || !IS_PLAYER_GUID(ownerGuid))
+            if (!player || !IS_PLAYER_GUID(ownerGuid))
             {
                 ChatHandler(player->GetSession()).PSendSysMessage(LANG_COMMAND_DELOBJREFERCREATURE, GUID_LOPART(ownerGuid), object->GetGUIDLow());
                 ChatHandler(player->GetSession()).SetSentErrorMessage(true);
                 return;
             }
 
-            owner->RemoveGameObject(object, false);
+            player->RemoveGameObject(object, false);
         }
 
         object->SetRespawnTime(0);                                 // not save respawn time
