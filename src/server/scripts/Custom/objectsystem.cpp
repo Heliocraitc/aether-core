@@ -15,10 +15,6 @@
 #include "PoolMgr.h"
 #include "Opcodes.h"
 
-static const WorldLocation* gtargetpos;
-static uint32 gitemId = 0;
-static GameObject* gObject = NULL;
-
 class cs_object_pickup : public SpellScriptLoader
 {
 public:

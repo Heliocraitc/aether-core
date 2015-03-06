@@ -1,9 +1,8 @@
-using namespace std;
 #include "ScriptPCH.h"
 #include "Player.h"
 #include "menustone.h"
 #include <string>
-#include "objectsystem.cpp"
+#include "objectsystem.h"
 
 static const SpellCastTargets* targetpos;
 

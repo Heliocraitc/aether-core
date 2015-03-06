@@ -1,9 +1,11 @@
 #ifndef OBJECT_SYSTEM_H
 #define OBJECT_SYSTEM_H
 
-using namespace std;
 /* Variables for managing objects */
 static uint32 selected_object; // GUID of selected object.
+static const WorldLocation* gtargetpos;
+static uint32 gitemId = 0;
+static GameObject* gObject = NULL;
 
 enum directions
 {
