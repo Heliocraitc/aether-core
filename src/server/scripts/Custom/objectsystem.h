@@ -34,7 +34,7 @@ static void Rotate(uint32 gameobject, uint8 direction, float amount, Player* pla
 static void ChangeOwner(uint32 gameobject, uint32 recipient);
 };
 
-enum Object_Selection{
+/*enum Object_Selection{
 SELECT_OBJECT = 1,
 PREVIOUS_OBJECT,
 NEXT_OBJECT,
@@ -44,7 +44,7 @@ EDIT_OBJECT_POSITION,
 CHANGE_OBJECT_OWNER,
 LIST_ALL_OBJECTS
 };
-
+*/
 enum aether_item_objects_orc
 {
     ORC_SMALL_TABLE_ITEM = 73000,
