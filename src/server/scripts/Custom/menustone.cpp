@@ -16,7 +16,7 @@ public:
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& targets)
     {
-        targetpos = targets;
+        targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
 
         switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
