@@ -34,7 +34,7 @@ static void Rotate(uint32 gameobject, uint8 direction, float amount, Player* pla
 static void ChangeOwner(uint32 gameobject, uint32 recipient);
 };
 
-enum {
+enum Object_Selection{
 SELECT_OBJECT = 1,
 PREVIOUS_OBJECT,
 NEXT_OBJECT,
