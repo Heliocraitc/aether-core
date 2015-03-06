@@ -5,14 +5,18 @@ using namespace std;
 #include <string>
 #include "objectsystem.cpp"
 
+static const SpellCastTargets* targetpos;
+
 class cs_menustone : public ItemScript
 {
+
 
 public:
     cs_menustone() : ItemScript("cs_menustone") {}
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& targets)
     {
+        targetpos = targets;
         player->PlayerTalkClass->ClearMenus();
 
         switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
@@ -418,7 +422,7 @@ public:
             break;
 
         case PICKUP_OBJECT:
-            gtargetpos = targets.GetDstPos();
+            gtargetpos = targetpos->GetDstPos();
             player->CastSpell(player, 90103, true);
             break;
 
