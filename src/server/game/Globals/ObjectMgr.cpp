@@ -7481,9 +7481,14 @@ bool isValidString(const std::wstring& wstr, uint32 strictMask, bool numericOrSp
 uint8 ObjectMgr::CheckPlayerName(const std::string& name, bool create)
 {
     std::wstring wname;
-    if (!Utf8toWStr(name, wname))
-        return CHAR_NAME_INVALID_CHARACTER;
+    /*Aether Code Block
+    EDITED BY: HELIOCRATIC
+    */
 
+    /*if (!Utf8toWStr(name, wname))
+        return CHAR_NAME_INVALID_CHARACTER;*/
+
+/*End of Codeblock*/
     if (wname.size() > MAX_PLAYER_NAME)
         return CHAR_NAME_TOO_LONG;
 
