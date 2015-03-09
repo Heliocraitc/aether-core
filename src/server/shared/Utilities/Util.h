@@ -168,6 +168,22 @@ inline bool isBasicLatinCharacter(wchar_t wchar)
         return true;
     return false;
 }
+/*Aether Codeblock0
+  BY HELIOCRATIC
+*/
+
+inline bool isBasicLatinCharacterAether(wchar_t wchar)
+{
+    if (wchar >= L'a' && wchar <= L'z')                      // LATIN SMALL LETTER A - LATIN SMALL LETTER Z
+        return true;
+    if (wchar >= L'A' && wchar <= L'Z')                      // LATIN CAPITAL LETTER A - LATIN CAPITAL LETTER Z
+        return true;
+    if (wchar == L'\'')                                      //Latin apostrophe
+        return true;
+    return false;
+}
+
+/*End of Code block*/
 
 inline bool isExtendedLatinCharacter(wchar_t wchar)
 {
@@ -238,6 +254,21 @@ inline bool isNumeric(char const* str)
 
     return true;
 }
+/*Aether Codeblock1
+  BY HELIOCRATIC
+*/
+inline bool isNumericOrSpaceAether(wchar_t wchar)
+{
+    return isNumeric(wchar);
+}
+
+inline bool isBasicLatinStringAether(const std::wstring &wstr, bool numericOrSpace)
+{
+    for (size_t i = 0; i < wstr.size(); ++i)
+        if (!isBasicLatinCharacterAether(wstr[i]) && (!numericOrSpace || !isNumericOrSpaceAether(wstr[i])))
+            return false;
+    return true;
+}
 
 inline bool isNumericOrSpace(wchar_t wchar)
 {
@@ -251,6 +282,8 @@ inline bool isBasicLatinString(const std::wstring &wstr, bool numericOrSpace)
             return false;
     return true;
 }
+
+/*End of Code Block*/
 
 inline bool isExtendedLatinString(const std::wstring &wstr, bool numericOrSpace)
 {

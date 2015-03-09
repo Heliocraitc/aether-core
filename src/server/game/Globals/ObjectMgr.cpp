@@ -7442,6 +7442,10 @@ static LanguageType GetRealmLanguageType(bool create)
     }
 }
 
+    /*Aether Code Block
+    EDITED BY: HELIOCRATIC
+    */
+
 bool isValidString(const std::wstring& wstr, uint32 strictMask, bool numericOrSpace, bool create = false)
 {
     if (strictMask == 0)                                       // any language, ignore realm
@@ -7471,7 +7475,7 @@ bool isValidString(const std::wstring& wstr, uint32 strictMask, bool numericOrSp
 
     if (strictMask & 0x1)                                    // basic Latin
     {
-        if (isBasicLatinString(wstr, numericOrSpace))
+        if (isBasicLatinStringAether(wstr, numericOrSpace))
             return true;
     }
 
@@ -7481,14 +7485,11 @@ bool isValidString(const std::wstring& wstr, uint32 strictMask, bool numericOrSp
 uint8 ObjectMgr::CheckPlayerName(const std::string& name, bool create)
 {
     std::wstring wname;
-    /*Aether Code Block
-    EDITED BY: HELIOCRATIC
-    */
 
-    /*if (!Utf8toWStr(name, wname))
-        return CHAR_NAME_INVALID_CHARACTER;*/
 
-/*End of Codeblock*/
+    if (!Utf8toWStr(name, wname))
+        return CHAR_NAME_INVALID_CHARACTER;
+
     if (wname.size() > MAX_PLAYER_NAME)
         return CHAR_NAME_TOO_LONG;
 
@@ -7507,6 +7508,7 @@ uint8 ObjectMgr::CheckPlayerName(const std::string& name, bool create)
 
     return CHAR_NAME_SUCCESS;
 }
+/*End of Code block*/
 
 bool ObjectMgr::IsValidCharterName(const std::string& name)
 {
