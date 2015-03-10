@@ -7475,7 +7475,7 @@ bool isValidString(const std::wstring& wstr, uint32 strictMask, bool numericOrSp
 
     if (strictMask & 0x1)                                    // basic Latin
     {
-        if (isBasicLatinStringAether(wstr, numericOrSpace))
+        if (isBasicLatinString(wstr, numericOrSpace))
             return true;
     }
 
