@@ -17282,9 +17282,12 @@ bool Player::LoadFromDB(uint32 guid, SQLQueryHolder *holder)
     Object::_Create(guid, 0, HIGHGUID_PLAYER);
 
     m_name = fields[2].GetString();
+    /*Aether Code Block
+    EDITED BY: Heliocratic*/
 
     // check name limitations
-    if (ObjectMgr::CheckPlayerName(m_name) != CHAR_NAME_SUCCESS ||
+    //Heliocratic: Commented it out 03/10/2015
+    /*if (ObjectMgr::CheckPlayerName(m_name) != CHAR_NAME_SUCCESS ||
         (!GetSession()->HasPermission(rbac::RBAC_PERM_SKIP_CHECK_CHARACTER_CREATION_RESERVEDNAME) &&
          sObjectMgr->IsReservedName(m_name)))
     {
@@ -17293,7 +17296,9 @@ bool Player::LoadFromDB(uint32 guid, SQLQueryHolder *holder)
         stmt->setUInt32(1, guid);
         CharacterDatabase.Execute(stmt);
         return false;
-    }
+    }*/
+
+   /*End of Code block*/
 
     // overwrite possible wrong/corrupted guid
     SetUInt64Value(OBJECT_FIELD_GUID, MAKE_NEW_GUID(guid, 0, HIGHGUID_PLAYER));
