@@ -593,7 +593,7 @@ void Guild::Member::SetStats(Player* player)
 {
     m_name      = player->GetName();
     m_level     = 1;
-    m_class     = 0;
+    m_class     = 1;
     m_zoneId    = AREA_FLAG_UNUSED1; //Custom edit
     m_accountId = player->GetSession()->GetAccountId();
 }
@@ -602,7 +602,7 @@ void Guild::Member::SetStats(std::string const& name, uint8 level, uint8 _class,
 {
     m_name      = name;
     m_level     = 1;
-    m_class     = 0;
+    m_class     = 1;
     m_zoneId    = AREA_FLAG_UNUSED1; //Custom edit
     m_accountId = accountId;
 }

@@ -118,10 +118,10 @@ public:
         return true;
     }
 
-    void OnGossipSelect(Player* player, Item* item, uint32 sender, uint32 actions)
+    void OnGossipSelect(Player* player, Item* item, uint32 sender, uint32 action)
     {
 
-    switch(actions)
+    switch(action)
     {
         case MAIN_MENU:
             player->PlayerTalkClass->ClearMenus();
@@ -477,6 +477,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Allow Player", GOSSIP_SENDER_MAIN, ALLOW_PLAYER);
             player->ADD_GOSSIP_ITEM(0, "Allow Guild", GOSSIP_SENDER_MAIN, ALLOW_GUILD);
             player->ADD_GOSSIP_ITEM(0, "Allow Anyone", GOSSIP_SENDER_MAIN, ALLOW_ANYONE);
+            player->ADD_GOSSIP_ITEM(0, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP_ENTRY);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             break;
 
@@ -489,6 +490,10 @@ public:
             break;
 
         case ALLOW_ANYONE:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+            break;
+
+        case TRANSFER_OWNERSHIP_ENTRY: //Transfer APT ownership
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
             break;
 
@@ -507,15 +512,7 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
             break;
 
-        case PORTABLEGOBJECT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
-
-        case TRANSFER_OWNERSHIP_ENTRY:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
-
-        case PAGENUMBER:
+        case PORTABLEGOBJECT: //To view how many objects you own & Display permissions for each object
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
             break;
 
@@ -523,11 +520,10 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
             break;
     }
-    player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
+
     }
-};
-        // Needed for selecting the player name in Game Object Template.
-bool OnGossipSelectCode(Player* player, Creature* creature, uint32 sender, uint32 action, char const* code)
+
+    bool OnGossipSelectCode(Player* player, Item* item, uint32 sender, uint32 action, char const* code) // Needed for selecting the player name in Game Object Template.
 {
 
   switch(action)
@@ -552,6 +548,9 @@ bool OnGossipSelectCode(Player* player, Creature* creature, uint32 sender, uint3
   }
   return true;
 }
+};
+
+
 
 void AddSC_cs_menustone()
 {

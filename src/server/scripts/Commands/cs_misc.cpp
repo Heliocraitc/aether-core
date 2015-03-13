@@ -273,14 +273,6 @@ public:
         uint64 targetGuid;
         std::string targetName;
 
-         char* tailStr = *args != '"' ? strtok(NULL, "") : (char*)args;
-        if (!tailStr)
-            return false;
-
-        char* quotedStr = handler->extractQuotedArgAether(tailStr);
-        if (!quotedStr)
-            return false;
-
         if (!handler->extractPlayerTarget(quotedStr, &target, &targetGuid, &targetName))
             return false;
 

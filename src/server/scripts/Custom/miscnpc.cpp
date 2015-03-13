@@ -6,6 +6,7 @@
 #include <cstring>
 #include "ObjectMgr.h"
 #include "MiscFunctions.h"
+
 class cs_dalarangatekeeper : public CreatureScript
 {
 public:
@@ -46,6 +47,36 @@ public:
         return true;
         }
     }
+};
+
+class cs_rename_npc : public CreatureScript
+{
+public:
+    cs_rename_npc() : CreatureScript("cs_rename_npc") { }
+
+  bool OnGossipHello(Player * player, Creature * creature)
+  {
+        player->ADD_GOSSIP_ITEM_EXTENDED(0, "Rename.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1,"", 0, true);
+        player->PlayerTalkClass->SendGossipMenu(90100, creature->GetGUID());
+        return true;
+  }
+
+  bool OnGossipSelect(Player * player, Creature * creature, uint32 sender, uint32 actions)
+  {
+        return true;
+  }
+
+  bool OnGossipSelectCode(Player* player, Creature* creature, uint32 sender, uint32 action, char const* code)
+  {
+     switch (action)
+     {
+        case GOSSIP_ACTION_INFO_DEF+1:
+            std::string spacednamed = code;
+            player->SetName(spacenamed);
+        break;
+     }
+     return true;
+  }
 };
 
 class cs_cartographer : public CreatureScript
@@ -529,4 +560,5 @@ void AddSC_aether_misc_npcs()
 {
     new cs_dalarangatekeeper;
     new cs_cartographer;
+    new cs_rename_npc;
 }
