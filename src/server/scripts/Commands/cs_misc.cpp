@@ -264,12 +264,24 @@ public:
         return true;
     }
     // Teleport to Player
+    /*Aether Code Block0
+    Edited By: Heliocratic
+    */
     static bool HandleAppearCommand(ChatHandler* handler, char const* args)
     {
         Player* target;
         uint64 targetGuid;
         std::string targetName;
-        if (!handler->extractPlayerTarget((char*)args, &target, &targetGuid, &targetName))
+
+         char* tailStr = *args != '"' ? strtok(NULL, "") : (char*)args;
+        if (!tailStr)
+            return false;
+
+        char* quotedStr = handler->extractQuotedArg(tailStr);
+        if (!quotedStr)
+            return false;
+
+        if (!handler->extractPlayerTarget(quotedStr, &target, &targetGuid, &targetName))
             return false;
 
         Player* _player = handler->GetSession()->GetPlayer();
@@ -405,6 +417,8 @@ public:
 
         return true;
     }
+
+/*End of Codeblock*/
     // Summon Player
     static bool HandleSummonCommand(ChatHandler* handler, char const* args)
     {
