@@ -523,11 +523,11 @@ public:
 
     }
 
-    bool OnGossipSelectCode(Player* player, Item* item, uint32 sender, uint32 action, char const* code) // Needed for selecting the player name in Game Object Template.
-{
+  void OnGossipSelectCode(Player* player, Item* item, uint32 sender, uint32 action, char const* code) // Needed for selecting the player name in Game Object Template.
+  {
 
   switch(action)
-  {
+   {
     case EDIT_X:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
         break;
@@ -545,9 +545,8 @@ public:
         break;
     default:
         break;
+   }
   }
-  return true;
-}
 };
 
 
