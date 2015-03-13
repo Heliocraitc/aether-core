@@ -86,12 +86,12 @@ inline uint32 _GetGuildBankTabPrice(uint8 tabId)
 {
     switch (tabId)
     {
-        case 0: return 100;
-        case 1: return 250;
-        case 2: return 500;
-        case 3: return 1000;
-        case 4: return 2500;
-        case 5: return 5000;
+        case 0: return 0;
+        case 1: return 0;
+        case 2: return 0;
+        case 3: return 0;
+        case 4: return 0;
+        case 5: return 0;
         default: return 0;
     }
 }
@@ -592,8 +592,8 @@ EDITED BY: HELIOCRATIC
 void Guild::Member::SetStats(Player* player)
 {
     m_name      = player->GetName();
-    m_level     = player->getLevel();
-    m_class     = player->getClass();
+    m_level     = 1;
+    m_class     = 0;
     m_zoneId    = AREA_FLAG_UNUSED1; //Custom edit
     m_accountId = player->GetSession()->GetAccountId();
 }
@@ -601,8 +601,8 @@ void Guild::Member::SetStats(Player* player)
 void Guild::Member::SetStats(std::string const& name, uint8 level, uint8 _class, uint32 zoneId, uint32 accountId)
 {
     m_name      = name;
-    m_level     = level;
-    m_class     = _class;
+    m_level     = 1;
+    m_class     = 0;
     m_zoneId    = AREA_FLAG_UNUSED1; //Custom edit
     m_accountId = accountId;
 }

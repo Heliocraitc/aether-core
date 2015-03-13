@@ -277,7 +277,7 @@ public:
         if (!tailStr)
             return false;
 
-        char* quotedStr = handler->extractQuotedArg(tailStr);
+        char* quotedStr = handler->extractQuotedArgAether(tailStr);
         if (!quotedStr)
             return false;
 
