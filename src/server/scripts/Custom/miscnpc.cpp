@@ -71,7 +71,7 @@ public:
      switch (action)
      {
         case GOSSIP_ACTION_INFO_DEF+1:
-            std::string spacednamed = code;
+            std::string spacenamed = code;
             player->SetName(spacenamed);
         break;
      }
