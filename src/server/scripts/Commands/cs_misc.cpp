@@ -272,8 +272,7 @@ public:
         Player* target;
         uint64 targetGuid;
         std::string targetName;
-
-        if (!handler->extractPlayerTarget(quotedStr, &target, &targetGuid, &targetName))
+        if (!handler->extractPlayerTarget((char*)args, &target, &targetGuid, &targetName))
             return false;
 
         Player* _player = handler->GetSession()->GetPlayer();
