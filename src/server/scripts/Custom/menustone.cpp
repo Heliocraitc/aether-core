@@ -18,6 +18,7 @@ public:
     {
         targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
+        player->ADD_GOSSIP_ITEM(4, "Welcome to the Aetherstone, from this menu you can interface with all of our systems.", GOSSIP_SENDER_MAIN, 0);
 
         switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
         {
@@ -114,7 +115,7 @@ public:
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
-        player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
+        player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
         return true;
     }
 
@@ -221,7 +222,7 @@ public:
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
         player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
-        player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
+        player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
         break;
 
         case PLAYER:
@@ -229,6 +230,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Friendly Actions", GOSSIP_SENDER_MAIN, FRIENDLY_PLAYER);
             player->ADD_GOSSIP_ITEM(0, "Hostile Actions", GOSSIP_SENDER_MAIN, ENEMY_PLAYER);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case FRIENDLY_PLAYER:
@@ -237,6 +239,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Escort Player Bot", GOSSIP_SENDER_MAIN, ESCORT_PLAYER_BOT);
             player->ADD_GOSSIP_ITEM(0, "Feed Player Bot", GOSSIP_SENDER_MAIN, FEED_PLAYER_BOT);
             player->ADD_GOSSIP_ITEM(0, "Main Menu", GOSSIP_SENDER_MAIN,  MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case RELEASE_PLAYER:
@@ -258,6 +261,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Force-feed Player", GOSSIP_SENDER_MAIN, FORCEFEED_PLAYER);
             player->ADD_GOSSIP_ITEM(0, "Injure Player", GOSSIP_SENDER_MAIN, INJURE_PLAYER);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case RESTRAIN_PLAYER:
@@ -281,6 +285,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Injure Right Leg", GOSSIP_SENDER_MAIN, INJURE_RIGHT_LEG);
             player->ADD_GOSSIP_ITEM(0, "Injure Left Leg", GOSSIP_SENDER_MAIN, INJURE_LEFT_LEG);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case INJURE_HEAD:
@@ -313,6 +318,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Followers", GOSSIP_SENDER_MAIN, FOLLOWER);
             player->ADD_GOSSIP_ITEM(0, "Guild NPCs", GOSSIP_SENDER_MAIN, GUILD_NPC);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case MOUNT:
@@ -322,6 +328,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Harness Mount", GOSSIP_SENDER_MAIN, HARNESS_MOUNT);
             player->ADD_GOSSIP_ITEM(0, "Armor Mount", GOSSIP_SENDER_MAIN, ARMOR_MOUNT);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case WAIT_MOUNT:
@@ -354,6 +361,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Give Armor", GOSSIP_SENDER_MAIN, GIVE_ARMOR);
             player->ADD_GOSSIP_ITEM(0, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case GOTO_FOLLOWER:
@@ -398,6 +406,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Start Patrol", GOSSIP_SENDER_MAIN, START_PATROL);
             player->ADD_GOSSIP_ITEM(0, "End Patrol", GOSSIP_SENDER_MAIN, STOP_PATROL);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case ADD_WAYPOINT:
@@ -419,6 +428,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Attack Target", GOSSIP_SENDER_MAIN, ATTACK_GUILD);
             player->ADD_GOSSIP_ITEM(0, "Go to Point", GOSSIP_SENDER_MAIN, GOTO_GUILD);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case WAIT_GUILD:
@@ -449,6 +459,7 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Change Object Owner", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_OWNER);
             player->ADD_GOSSIP_ITEM(0, "Change Object Permissions", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_PERMISSIONS);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case SELECT_OBJECT:
@@ -469,6 +480,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Edit Z Coordinates", GOSSIP_SENDER_MAIN, EDIT_Z);
             player->ADD_GOSSIP_ITEM(0, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case CHANGE_OBJECT_PERMISSIONS:
@@ -479,6 +491,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Allow Anyone", GOSSIP_SENDER_MAIN, ALLOW_ANYONE);
             player->ADD_GOSSIP_ITEM(0, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP_ENTRY);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case ALLOW_FRIENDS:
@@ -502,6 +515,8 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Census", GOSSIP_SENDER_MAIN, CENSUS);
             player->ADD_GOSSIP_ITEM(4, "Deaths", GOSSIP_SENDER_MAIN, DEATHS);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Check your objects", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
             break;
 
         case CENSUS:

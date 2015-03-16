@@ -24,7 +24,7 @@
 #define BLOODELF_FEMALE "|TInterface/ICONS/Achievement_Character_Bloodelf_Female:30|t Player"
 
 enum {
-    MAIN_MENU,
+    MAIN_MENU = 1,
     PLAYER,
     FRIENDLY_PLAYER,
     RELEASE_PLAYER,
@@ -86,8 +86,7 @@ enum {
     EDIT_Y,
     EDIT_Z,
     EDIT_O,
-    PORTABLEGOBJECT = 2000,
-    TRANSFER_OWNERSHIP_ENTRY,
-    PAGENUMBER = 3000
+    PORTABLEGOBJECT,
+    TRANSFER_OWNERSHIP_ENTRY
     };
 #endif
