@@ -18,8 +18,6 @@ public:
     {
         targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
-        player->ADD_GOSSIP_ITEM(4, "Welcome to the Aetherstone, from this menu you can interface with all of our systems.", GOSSIP_SENDER_MAIN, 0);
-
         switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
         {
             case GENDER_MALE:
@@ -244,15 +242,15 @@ public:
 
         case RELEASE_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ESCORT_PLAYER_BOT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FEED_PLAYER_BOT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ENEMY_PLAYER:
             player->PlayerTalkClass->ClearMenus();
@@ -262,19 +260,19 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Injure Player", GOSSIP_SENDER_MAIN, INJURE_PLAYER);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case RESTRAIN_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case HAUL_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FORCEFEED_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_PLAYER:
             player->PlayerTalkClass->ClearMenus();
@@ -286,31 +284,31 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Injure Left Leg", GOSSIP_SENDER_MAIN, INJURE_LEFT_LEG);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case INJURE_HEAD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_RIGHT_ARM:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_LEFT_ARM:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_TORSO:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_RIGHT_LEG:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case INJURE_LEFT_LEG:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case NPC:
             player->PlayerTalkClass->ClearMenus();
@@ -319,7 +317,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Guild NPCs", GOSSIP_SENDER_MAIN, GUILD_NPC);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case MOUNT:
             player->PlayerTalkClass->ClearMenus();
@@ -329,23 +327,23 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Armor Mount", GOSSIP_SENDER_MAIN, ARMOR_MOUNT);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case WAIT_MOUNT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FOLLOW_MOUNT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case HARNESS_MOUNT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ARMOR_MOUNT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FOLLOWER:
             player->PlayerTalkClass->ClearMenus();
@@ -362,43 +360,43 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case GOTO_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ATTACK_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FOLLOW_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case STANCE_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case TRADE_ITEMS_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case MOUNT_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case UNMOUNT_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case PAY_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case GIVE_ARMOR:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case PATROLLING:
             player->PlayerTalkClass->ClearMenus();
@@ -407,19 +405,19 @@ public:
             player->ADD_GOSSIP_ITEM(0, "End Patrol", GOSSIP_SENDER_MAIN, STOP_PATROL);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case ADD_WAYPOINT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case START_PATROL:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case STOP_PATROL:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case GUILD_NPC:
             player->PlayerTalkClass->ClearMenus();
@@ -429,27 +427,27 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Go to Point", GOSSIP_SENDER_MAIN, GOTO_GUILD);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case WAIT_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case FOLLOW_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ATTACK_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case GOTO_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ENEMY_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case OBJECTS:
             player->PlayerTalkClass->ClearMenus();
@@ -460,17 +458,17 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Change Object Permissions", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_PERMISSIONS);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case SELECT_OBJECT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case PICKUP_OBJECT:
             gtargetpos = targetpos->GetDstPos();
             player->CastSpell(player, 90103, true);
             ChatHandler(player->GetSession()).PSendSysMessage("You have picked up your item!");
-            break;
+
 
         case EDIT_OBJECT_POSITION:
             player->PlayerTalkClass->ClearMenus();
@@ -481,7 +479,7 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case CHANGE_OBJECT_PERMISSIONS:
             player->PlayerTalkClass->ClearMenus();
@@ -492,23 +490,23 @@ public:
             player->ADD_GOSSIP_ITEM(0, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP_ENTRY);
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case ALLOW_FRIENDS:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ALLOW_GUILD:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case ALLOW_ANYONE:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case TRANSFER_OWNERSHIP_ENTRY: //Transfer APT ownership
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case STATISTICS:
             player->PlayerTalkClass->ClearMenus();
@@ -517,23 +515,24 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->ADD_GOSSIP_ITEM(4, "Check your objects", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
+
 
         case CENSUS:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case DEATHS:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         case PORTABLEGOBJECT: //To view how many objects you own & Display permissions for each object
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-            break;
+
 
         default:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+            player->PlayerTalkClass->ClearMenus();
             break;
+
     }
 
     }
@@ -545,20 +544,21 @@ public:
    {
     case EDIT_X:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-        break;
+
     case EDIT_Y:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-        break;
+
     case EDIT_Z:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-        break;
+
     case EDIT_O:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-        break;
+
     case CHANGE_OBJECT_OWNER:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-        break;
+
     default:
+        player->PlayerTalkClass->ClearMenus();
         break;
    }
   }

@@ -81,10 +81,7 @@
 #include "GameObjectAI.h"
 #include "../../../scripts/Custom/Transmogrification.h"
 
-/*aether Defines Values */
-#define intialGold 300
-#define afkGold 100
-/*End of aether Defines*/
+
 
 #define ZONE_UPDATE_INTERVAL (1*IN_MILLISECONDS)
 
@@ -148,12 +145,6 @@ enum CharacterCustomizeFlags
 // corpse reclaim times
 #define DEATH_EXPIRE_STEP (5*MINUTE)
 #define MAX_DEATH_COUNT 3
-
-/*aether timing variables*/
-bool paid = true;
-uint32 start_t = time(NULL) + 1;
-uint32 end_t;
-/*End of aether timing variables*/
 
 static uint32 copseReclaimDelay[MAX_DEATH_COUNT] = { 30, 60, 120 };
 
@@ -1866,36 +1857,7 @@ void Player::Update(uint32 p_time)
     //because we don't want player's ghost teleported from graveyard
     if (IsHasDelayedTeleport() && IsAlive()) //custom edits
         TeleportTo(m_teleport_dest, m_teleport_options);
-    /*
-    aether code block starts here
-    EDITED BY: HELIOCRATIC
-    */
-        if (((GetTotalPlayedTime()*IN_MILLISECONDS)%1800000) == 0)
-            {
-            /*AFK Payments*/
-           if ((isAFK()) && (!paid))
-            {
-            ModifyMoney(afkGold);
-            paid = true;
-            ChatHandler(GetSession()).PSendSysMessage("You have recieved one silver due to being AFK.");
-            }
-           else if (!paid) /*Normal Payments*/
-            {
-            ModifyMoney(intialGold);
-            paid = true;
-            ChatHandler(GetSession()).PSendSysMessage("You have received three silver for roleplaying.");
-            }
-            else /*Reset Delay*/
-            {
-            end_t = time(NULL);
-                if(end_t > start_t)
-                {
-                start_t = time(NULL) + 1;
-                paid = false;
-                }
-            }
-        }
-    /*Code block ends here*/
+
 }
 
 void Player::setDeathState(DeathState s)
@@ -2659,14 +2621,7 @@ void Player::RegenerateHealth()
 {
     uint32 curValue = GetHealth();
     uint32 maxValue = GetMaxHealth();
-    /*
-    aether2 code block starts here
-    EDITED BY: HELIOCRATIC
-    */
-    if((GetHealthPct() >= 20) && (HasAura(90003) == true)) //custom aether edits, Removes the Deathstunned aura if you are health above 20% health
-            RemoveAura(90003);
 
-    /*Code block ends here*/
     if (curValue >= maxValue)
         return;
 
@@ -2706,10 +2661,6 @@ void Player::RegenerateHealth()
     aether3 code block starts here
     EDITED BY: HELIOCRATIC
     */
-    if (addValue < 0.0f)
-        addValue = 0.0f;
-
-
     if(HasAura(90003) == true) //custom edits, makes you regen zero health while deathstunned
         addValue = 0;
 
