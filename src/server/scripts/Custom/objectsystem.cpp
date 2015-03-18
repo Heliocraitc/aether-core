@@ -65,6 +65,7 @@ public:
         player->AddItem(object->GetEntry(), 1);
 
         ChatHandler(player->GetSession()).PSendSysMessage(LANG_COMMAND_DELOBJMESSAGE, object->GetGUIDLow());
+        ChatHandler(player->GetSession()).PSendSysMessage("You have picked up your item!");
 
         return;
         }

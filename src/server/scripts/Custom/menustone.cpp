@@ -7,6 +7,102 @@
 
 static const SpellCastTargets* targetpos;
 
+void HandlePlayerIcon(uint8 race, uint8 sex)
+{
+ switch(sex)  // Display the player's race icon as the player icon for their gender.
+        {
+            case GENDER_MALE:
+                switch(race)
+                {
+                    case RACE_HUMAN:
+                        player->ADD_GOSSIP_ITEM(7, HUMAN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_BLOODELF:
+                        player->ADD_GOSSIP_ITEM(7, BLOODELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_DRAENEI:
+                        player->ADD_GOSSIP_ITEM(7, DRAENEI_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_DWARF:
+                        player->ADD_GOSSIP_ITEM(7, DWARF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_GNOME:
+                        player->ADD_GOSSIP_ITEM(7, GNOME_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_NIGHTELF:
+                        player->ADD_GOSSIP_ITEM(7, NIGHTELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_ORC:
+                        player->ADD_GOSSIP_ITEM(7, ORC_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_TAUREN:
+                        player->ADD_GOSSIP_ITEM(7, TAUREN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_TROLL:
+                        player->ADD_GOSSIP_ITEM(7, TROLL_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_UNDEAD_PLAYER:
+                        player->ADD_GOSSIP_ITEM(7, FORSAKEN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+                }
+                break;
+
+            case GENDER_FEMALE:
+                switch(race)
+                {
+                    case RACE_HUMAN:
+                        player->ADD_GOSSIP_ITEM(7, HUMAN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_BLOODELF:
+                        player->ADD_GOSSIP_ITEM(7, BLOODELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_DRAENEI:
+                        player->ADD_GOSSIP_ITEM(7, DRAENEI_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_DWARF:
+                        player->ADD_GOSSIP_ITEM(7, DWARF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_GNOME:
+                        player->ADD_GOSSIP_ITEM(7, GNOME_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_NIGHTELF:
+                        player->ADD_GOSSIP_ITEM(7, NIGHTELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_ORC:
+                        player->ADD_GOSSIP_ITEM(7, ORC_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_TAUREN:
+                        player->ADD_GOSSIP_ITEM(7, TAUREN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_TROLL:
+                        player->ADD_GOSSIP_ITEM(7, TROLL_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+
+                    case RACE_UNDEAD_PLAYER:
+                        player->ADD_GOSSIP_ITEM(7, FORSAKEN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
+                        break;
+                }
+            break;
+        }
+}
+
 class cs_menustone : public ItemScript
 {
 
@@ -18,101 +114,10 @@ public:
     {
         targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
-        switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
-        {
-            case GENDER_MALE:
-                switch(player->getRace())
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(4, HUMAN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(4, BLOODELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(4, DRAENEI_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(4, DWARF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(4, GNOME_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(4, NIGHTELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(4, ORC_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(4, TAUREN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(4, TROLL_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(4, FORSAKEN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-                break;
-
-            case GENDER_FEMALE:
-                switch(player->getRace())
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(4, HUMAN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(4, BLOODELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(4, DRAENEI_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(4, DWARF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(4, GNOME_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(4, NIGHTELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(4, ORC_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(4, TAUREN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(4, TROLL_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(4, FORSAKEN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-                break;
-        }
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
+        HandlePlayerIcon(player->getRace(), player->getGender());
+        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
+        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
+        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
         player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
         return true;
     }
@@ -124,165 +129,59 @@ public:
     {
         case MAIN_MENU:
             player->PlayerTalkClass->ClearMenus();
-
-        switch(player->getGender())  // Display the player's race icon as the player icon for their gender.
-        {
-            case GENDER_MALE:
-                switch(player->getRace())
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(4, HUMAN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(4, BLOODELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(4, DRAENEI_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(4, DWARF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(4, GNOME_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(4, NIGHTELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(4, ORC_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(4, TAUREN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(4, TROLL_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(4, FORSAKEN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-                break;
-
-            case GENDER_FEMALE:
-                switch(player->getRace())
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(4, HUMAN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(4, BLOODELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(4, DRAENEI_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(4, DWARF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(4, GNOME_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(4, NIGHTELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(4, ORC_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(4, TAUREN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(4, TROLL_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(4, FORSAKEN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-                break;
-        }
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
-        player->ADD_GOSSIP_ITEM(4, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
-        player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-        break;
+            HandlePlayerIcon(player->getRace(), player->getGender());
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
+            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
         case PLAYER:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Friendly Actions", GOSSIP_SENDER_MAIN, FRIENDLY_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Hostile Actions", GOSSIP_SENDER_MAIN, ENEMY_PLAYER);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(5, "Release", GOSSIP_SENDER_MAIN, RELEASE_PLAYER); //Release the player from bonds or release the target from the deathstun
+            player->ADD_GOSSIP_ITEM(5, "Restrain", GOSSIP_SENDER_MAIN, RESTRAIN_PLAYER); //Tie the player's hands up, so they can't use weapons
+            player->ADD_GOSSIP_ITEM(5, "Escort", GOSSIP_SENDER_MAIN, ESCORT_PLAYER); //Force-feed when restrained, Feed player when a playerbot
+            player->ADD_GOSSIP_ITEM(5, "Feed ", GOSSIP_SENDER_MAIN, FEED_PLAYER); //Works on Friendly players & Enemy players
+            player->ADD_GOSSIP_ITEM(5, "Knockout", GOSSIP_SENDER_MAIN, KNOCKOUT_PLAYER); //Knocking out the target
+            player->ADD_GOSSIP_ITEM(5, "Kill", GOSSIP_SENDER_MAIN, KILL_PLAYER); //Executes the player taking one of their lives
+            player->ADD_GOSSIP_ITEM(5, "Rob", GOSSIP_SENDER_MAIN, ROB_PLAYER); //Robs 10% of current gold
+            player->ADD_GOSSIP_ITEM(7, "Injure", GOSSIP_SENDER_MAIN, INJURE_PLAYER); //Injures the player with appling a debuff
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN,  MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
-
-        case FRIENDLY_PLAYER:
-            player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Release Player", GOSSIP_SENDER_MAIN, RELEASE_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Escort Player Bot", GOSSIP_SENDER_MAIN, ESCORT_PLAYER_BOT);
-            player->ADD_GOSSIP_ITEM(0, "Feed Player Bot", GOSSIP_SENDER_MAIN, FEED_PLAYER_BOT);
-            player->ADD_GOSSIP_ITEM(0, "Main Menu", GOSSIP_SENDER_MAIN,  MAIN_MENU);
-            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-            break;
 
         case RELEASE_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ESCORT_PLAYER_BOT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case FEED_PLAYER_BOT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ENEMY_PLAYER:
-            player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Restrain Player", GOSSIP_SENDER_MAIN, RESTRAIN_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Haul Player", GOSSIP_SENDER_MAIN, HAUL_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Force-feed Player", GOSSIP_SENDER_MAIN, FORCEFEED_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Injure Player", GOSSIP_SENDER_MAIN, INJURE_PLAYER);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
-            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
         case RESTRAIN_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case HAUL_PLAYER:
+        case ESCORT_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case FORCEFEED_PLAYER:
+        case FEED_PLAYER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+
+        case KNOCKOUT_PLAYER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+
+        case KILL_PLAYER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+
+        case ROB_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
         case INJURE_PLAYER:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Injure Head", GOSSIP_SENDER_MAIN, INJURE_HEAD);
-            player->ADD_GOSSIP_ITEM(0, "Injure Right Arm", GOSSIP_SENDER_MAIN, INJURE_RIGHT_ARM);
-            player->ADD_GOSSIP_ITEM(0, "Injure Left Arm", GOSSIP_SENDER_MAIN, INJURE_LEFT_ARM);
-            player->ADD_GOSSIP_ITEM(0, "Injure Torso", GOSSIP_SENDER_MAIN, INJURE_TORSO);
-            player->ADD_GOSSIP_ITEM(0, "Injure Right Leg", GOSSIP_SENDER_MAIN, INJURE_RIGHT_LEG);
-            player->ADD_GOSSIP_ITEM(0, "Injure Left Leg", GOSSIP_SENDER_MAIN, INJURE_LEFT_LEG);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Injure Head", GOSSIP_SENDER_MAIN, INJURE_HEAD); //Reduces cast time and attack speed
+            player->ADD_GOSSIP_ITEM(4, "Injure Right Arm", GOSSIP_SENDER_MAIN, INJURE_RIGHT_ARM); //You can't wield anything in right hand
+            player->ADD_GOSSIP_ITEM(4, "Injure Left Arm", GOSSIP_SENDER_MAIN, INJURE_LEFT_ARM); //Player can't wield anything in left hand
+            player->ADD_GOSSIP_ITEM(4, "Injure Torso", GOSSIP_SENDER_MAIN, INJURE_TORSO); //Reduces stamina and unable to wear plate / mail
+            player->ADD_GOSSIP_ITEM(4, "Injure Right Leg", GOSSIP_SENDER_MAIN, INJURE_RIGHT_LEG); //Reduces running speed, if both legs are broken then 80% reduce speed
+            player->ADD_GOSSIP_ITEM(4, "Injure Left Leg", GOSSIP_SENDER_MAIN, INJURE_LEFT_LEG); //Reduces running speed, if both legs are broken then 80% reduce speed
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
@@ -312,98 +211,55 @@ public:
 
         case NPC:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Mount", GOSSIP_SENDER_MAIN, MOUNT);
-            player->ADD_GOSSIP_ITEM(0, "Followers", GOSSIP_SENDER_MAIN, FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Guild NPCs", GOSSIP_SENDER_MAIN, GUILD_NPC);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Wait", GOSSIP_SENDER_MAIN, WAIT_FOLLOWER); //Makes the NPC wait in its current position
+            player->ADD_GOSSIP_ITEM(4, "Follow", GOSSIP_SENDER_MAIN, FOLLOW_FOLLOWER); //NPC will follow the player
+            player->ADD_GOSSIP_ITEM(4, "Go to Here", GOSSIP_SENDER_MAIN, GOTO_FOLLOWER); //NPC will go to position and hold
+            player->ADD_GOSSIP_ITEM(4, "Attack Here", GOSSIP_SENDER_MAIN, ATTACK_FOLLOWER); //NPC will attack the targeted area
+            player->ADD_GOSSIP_ITEM(4, "Stance", GOSSIP_SENDER_MAIN, STANCE_FOLLOWER); //Putting the NPC in an aggressive, defensive, passive stance
+            player->ADD_GOSSIP_ITEM(4, "Trade Items", GOSSIP_SENDER_MAIN, TRADE_ITEMS_FOLLOWER); //Trading inventory with NPCs
+            player->ADD_GOSSIP_ITEM(4, "Assign Armor & Weapons", GOSSIP_SENDER_MAIN, ASSIGN_ARMOR); //Allows player to dicatate what armor or wepaons NPC should use
+            player->ADD_GOSSIP_ITEM(4, "Change Mount", GOSSIP_SENDER_MAIN, CHANGE_MOUNT); //Mount/Dismount a follower, boolean function
+            player->ADD_GOSSIP_ITEM(4, "Pay Follower", GOSSIP_SENDER_MAIN, PAY_FOLLOWER); //Bi-weekly you will need to pay followers
+            player->ADD_GOSSIP_ITEM(7, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING); //Patroling submenu for followers and guild NPCs
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
-
-        case MOUNT:
-            player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Wait", GOSSIP_SENDER_MAIN, WAIT_MOUNT);
-            player->ADD_GOSSIP_ITEM(0, "Follow", GOSSIP_SENDER_MAIN, FOLLOW_MOUNT);
-            player->ADD_GOSSIP_ITEM(0, "Harness Mount", GOSSIP_SENDER_MAIN, HARNESS_MOUNT);
-            player->ADD_GOSSIP_ITEM(0, "Armor Mount", GOSSIP_SENDER_MAIN, ARMOR_MOUNT);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
-            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-
-
-        case WAIT_MOUNT:
+        case WAIT_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case FOLLOW_MOUNT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case HARNESS_MOUNT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ARMOR_MOUNT:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case FOLLOWER:
-            player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Wait", GOSSIP_SENDER_MAIN, WAIT_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Follow", GOSSIP_SENDER_MAIN, FOLLOW_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Go to Point", GOSSIP_SENDER_MAIN, GOTO_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Attack This", GOSSIP_SENDER_MAIN, ATTACK_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Stance", GOSSIP_SENDER_MAIN, STANCE_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Trade Items", GOSSIP_SENDER_MAIN, TRADE_ITEMS_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Mount Follower", GOSSIP_SENDER_MAIN, MOUNT_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Dismount Follower", GOSSIP_SENDER_MAIN, UNMOUNT_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Pay Follower", GOSSIP_SENDER_MAIN, PAY_FOLLOWER);
-            player->ADD_GOSSIP_ITEM(0, "Give Armor", GOSSIP_SENDER_MAIN, GIVE_ARMOR);
-            player->ADD_GOSSIP_ITEM(0, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
-            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-
-
-        case GOTO_FOLLOWER:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ATTACK_FOLLOWER:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
 
         case FOLLOW_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
+        case GOTO_FOLLOWER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
+
+        case ATTACK_FOLLOWER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
         case STANCE_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
         case TRADE_ITEMS_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
-        case MOUNT_FOLLOWER:
+        case ASSIGN_ARMOR:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
-        case UNMOUNT_FOLLOWER:
+        case CHANGE_MOUNT:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
 
         case PAY_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case GIVE_ARMOR:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
 
         case PATROLLING:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Add Waypoint", GOSSIP_SENDER_MAIN, ADD_WAYPOINT);
-            player->ADD_GOSSIP_ITEM(0, "Start Patrol", GOSSIP_SENDER_MAIN, START_PATROL);
-            player->ADD_GOSSIP_ITEM(0, "End Patrol", GOSSIP_SENDER_MAIN, STOP_PATROL);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Add Waypoint", GOSSIP_SENDER_MAIN, ADD_WAYPOINT); //Adds a waypoint for the patrol route
+            player->ADD_GOSSIP_ITEM(4, "Start Patrol", GOSSIP_SENDER_MAIN, START_PATROL); //Begin the patrol
+            player->ADD_GOSSIP_ITEM(4, "End Patrol", GOSSIP_SENDER_MAIN, STOP_PATROL); //End the patrol on selected NPC
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
@@ -419,44 +275,13 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case GUILD_NPC:
-            player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Wait", GOSSIP_SENDER_MAIN, WAIT_GUILD);
-            player->ADD_GOSSIP_ITEM(0, "Follow", GOSSIP_SENDER_MAIN, FOLLOW_GUILD);
-            player->ADD_GOSSIP_ITEM(0, "Attack Target", GOSSIP_SENDER_MAIN, ATTACK_GUILD);
-            player->ADD_GOSSIP_ITEM(0, "Go to Point", GOSSIP_SENDER_MAIN, GOTO_GUILD);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
-            player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
-
-
-        case WAIT_GUILD:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case FOLLOW_GUILD:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ATTACK_GUILD:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case GOTO_GUILD:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
-        case ENEMY_GUILD:
-            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-
         case OBJECTS:
             player->PlayerTalkClass->ClearMenus();
             player->ADD_GOSSIP_ITEM(4, "Select Object", GOSSIP_SENDER_MAIN, SELECT_OBJECT);
             player->ADD_GOSSIP_ITEM(4, "Pickup Object", GOSSIP_SENDER_MAIN, PICKUP_OBJECT);
-            player->ADD_GOSSIP_ITEM(4, "Edit Object Position", GOSSIP_SENDER_MAIN, EDIT_OBJECT_POSITION);
-            player->ADD_GOSSIP_ITEM(4, "Change Object Owner", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_OWNER);
-            player->ADD_GOSSIP_ITEM(0, "Change Object Permissions", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_PERMISSIONS);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(7, "Edit Object Position", GOSSIP_SENDER_MAIN, EDIT_OBJECT_POSITION);
+            player->ADD_GOSSIP_ITEM(7, "Change Object Permissions", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_PERMISSIONS);
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
@@ -467,29 +292,34 @@ public:
         case PICKUP_OBJECT:
             gtargetpos = targetpos->GetDstPos();
             player->CastSpell(player, 90103, true);
-            ChatHandler(player->GetSession()).PSendSysMessage("You have picked up your item!");
 
 
         case EDIT_OBJECT_POSITION:
             player->PlayerTalkClass->ClearMenus();
             player->ADD_GOSSIP_ITEM(4, "Select Object", GOSSIP_SENDER_MAIN, SELECT_OBJECT);
-            player->ADD_GOSSIP_ITEM(0, "Edit X Coordinates", GOSSIP_SENDER_MAIN, EDIT_X);
-            player->ADD_GOSSIP_ITEM(0, "Edit Y Coordinates", GOSSIP_SENDER_MAIN, EDIT_Y);
-            player->ADD_GOSSIP_ITEM(0, "Edit Z Coordinates", GOSSIP_SENDER_MAIN, EDIT_Z);
-            player->ADD_GOSSIP_ITEM(0, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Edit X Coordinates", GOSSIP_SENDER_MAIN, EDIT_X);
+            player->ADD_GOSSIP_ITEM(4, "Edit Y Coordinates", GOSSIP_SENDER_MAIN, EDIT_Y);
+            player->ADD_GOSSIP_ITEM(4, "Edit Z Coordinates", GOSSIP_SENDER_MAIN, EDIT_Z);
+            player->ADD_GOSSIP_ITEM(4, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
         case CHANGE_OBJECT_PERMISSIONS:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(0, "Allow Friends", GOSSIP_SENDER_MAIN, ALLOW_FRIENDS);
-            player->ADD_GOSSIP_ITEM(0, "Allow Player", GOSSIP_SENDER_MAIN, ALLOW_PLAYER);
-            player->ADD_GOSSIP_ITEM(0, "Allow Guild", GOSSIP_SENDER_MAIN, ALLOW_GUILD);
-            player->ADD_GOSSIP_ITEM(0, "Allow Anyone", GOSSIP_SENDER_MAIN, ALLOW_ANYONE);
-            player->ADD_GOSSIP_ITEM(0, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP_ENTRY);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Select Object", GOSSIP_SENDER_MAIN, SELECT_OBJECT);
+            player->ADD_GOSSIP_ITEM(4, "Allow Player", GOSSIP_SENDER_MAIN, ALLOW_PLAYER); //Allows the targeted player to access the selected object
+            player->ADD_GOSSIP_ITEM(4, "Allow Friends", GOSSIP_SENDER_MAIN, ALLOW_FRIENDS); //Allow everyone on your friend's list to access the selected object, if no object then access to all objects
+            player->ADD_GOSSIP_ITEM(4, "Allow Guild", GOSSIP_SENDER_MAIN, ALLOW_GUILD); //Allow guild to access the selected object, if no object then access to all objects
+            player->ADD_GOSSIP_ITEM(4, "Allow Anyone", GOSSIP_SENDER_MAIN, ALLOW_ANYONE); //Allow anyone to access the selected object, if no object then access to all objects
+            player->ADD_GOSSIP_ITEM(4, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP); // The targeted player wiil be the owner the new owner
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
+
+        case ALLOW_PLAYER:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
         case ALLOW_FRIENDS:
@@ -504,16 +334,16 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case TRANSFER_OWNERSHIP_ENTRY: //Transfer APT ownership
+        case TRANSFER_OWNERSHIP: //Transfer APT ownership
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
         case STATISTICS:
             player->PlayerTalkClass->ClearMenus();
-            player->ADD_GOSSIP_ITEM(4, "Census", GOSSIP_SENDER_MAIN, CENSUS);
-            player->ADD_GOSSIP_ITEM(4, "Deaths", GOSSIP_SENDER_MAIN, DEATHS);
-            player->ADD_GOSSIP_ITEM(4, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
-            player->ADD_GOSSIP_ITEM(4, "Check your objects", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(4, "Census", GOSSIP_SENDER_MAIN, CENSUS); //Displays in chatbox the top five most populated zones
+            player->ADD_GOSSIP_ITEM(4, "Deaths", GOSSIP_SENDER_MAIN, DEATHS); //Displays how many times you've died and how many lives you have.
+            player->ADD_GOSSIP_ITEM(4, "Check your objects", GOSSIP_SENDER_MAIN, CHECK_OBJECTS); //Returns all objects you own and their permissions
+            player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
 
 
@@ -525,7 +355,7 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
-        case PORTABLEGOBJECT: //To view how many objects you own & Display permissions for each object
+        case CHECK_OBJECTS: //To view how many objects you own & Display permissions for each object
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
 
@@ -552,9 +382,6 @@ public:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
     case EDIT_O:
-        ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
-    case CHANGE_OBJECT_OWNER:
         ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
     default:
