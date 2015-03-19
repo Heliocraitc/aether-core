@@ -7,9 +7,15 @@
 
 static const SpellCastTargets* targetpos;
 
-void HandlePlayerIcon(uint8 race, uint8 sex)
+class cs_menustone : public ItemScript
 {
- switch(sex)  // Display the player's race icon as the player icon for their gender.
+
+public:
+    cs_menustone() : ItemScript("cs_menustone") {}
+
+    void HandlePlayerIcon(uint8 race, uint8 sex, Player* player)
+ {
+  switch(sex)  // Display the player's race icon as the player icon for their gender.
         {
             case GENDER_MALE:
                 switch(race)
@@ -101,20 +107,13 @@ void HandlePlayerIcon(uint8 race, uint8 sex)
                 }
             break;
         }
-}
-
-class cs_menustone : public ItemScript
-{
-
-
-public:
-    cs_menustone() : ItemScript("cs_menustone") {}
+ }
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& targets)
     {
         targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
-        HandlePlayerIcon(player->getRace(), player->getGender());
+        HandlePlayerIcon(player->getRace(), player->getGender(), player);
         player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
         player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
         player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
@@ -129,7 +128,7 @@ public:
     {
         case MAIN_MENU:
             player->PlayerTalkClass->ClearMenus();
-            HandlePlayerIcon(player->getRace(), player->getGender());
+            HandlePlayerIcon(player->getRace(), player->getGender(), player);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
