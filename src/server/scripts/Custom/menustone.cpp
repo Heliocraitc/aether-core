@@ -13,108 +13,12 @@ class cs_menustone : public ItemScript
 public:
     cs_menustone() : ItemScript("cs_menustone") {}
 
-    void HandlePlayerIcon(uint8 race, uint8 sex, Player* player)
- {
-  switch(sex)  // Display the player's race icon as the player icon for their gender.
-        {
-            case GENDER_MALE:
-                switch(race)
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(7, HUMAN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(7, BLOODELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(7, DRAENEI_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(7, DWARF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(7, GNOME_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(7, NIGHTELF_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(7, ORC_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(7, TAUREN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(7, TROLL_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(7, FORSAKEN_MALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-                break;
-
-            case GENDER_FEMALE:
-                switch(race)
-                {
-                    case RACE_HUMAN:
-                        player->ADD_GOSSIP_ITEM(7, HUMAN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_BLOODELF:
-                        player->ADD_GOSSIP_ITEM(7, BLOODELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DRAENEI:
-                        player->ADD_GOSSIP_ITEM(7, DRAENEI_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_DWARF:
-                        player->ADD_GOSSIP_ITEM(7, DWARF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_GNOME:
-                        player->ADD_GOSSIP_ITEM(7, GNOME_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_NIGHTELF:
-                        player->ADD_GOSSIP_ITEM(7, NIGHTELF_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_ORC:
-                        player->ADD_GOSSIP_ITEM(7, ORC_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TAUREN:
-                        player->ADD_GOSSIP_ITEM(7, TAUREN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_TROLL:
-                        player->ADD_GOSSIP_ITEM(7, TROLL_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-
-                    case RACE_UNDEAD_PLAYER:
-                        player->ADD_GOSSIP_ITEM(7, FORSAKEN_FEMALE, GOSSIP_SENDER_MAIN, PLAYER);
-                        break;
-                }
-            break;
-        }
- }
-
     bool OnUse(Player* player, Item* item, SpellCastTargets const& targets)
     {
         targetpos = &targets;
         player->PlayerTalkClass->ClearMenus();
-        HandlePlayerIcon(player->getRace(), player->getGender(), player);
-        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
+        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t Player", GOSSIP_SENDER_MAIN, PLAYER);
+        player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupNeedmore:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
         player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
         player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
         player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
@@ -123,13 +27,12 @@ public:
 
     void OnGossipSelect(Player* player, Item* item, uint32 sender, uint32 action)
     {
-
-    switch(action)
-    {
+      switch(action)
+      {
         case MAIN_MENU:
             player->PlayerTalkClass->ClearMenus();
-            HandlePlayerIcon(player->getRace(), player->getGender(), player);
-            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupLooking:30|t Player", GOSSIP_SENDER_MAIN, PLAYER);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\INV_Misc_GroupNeedmore:30|t NPC", GOSSIP_SENDER_MAIN, NPC);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
@@ -150,14 +53,11 @@ public:
         case RELEASE_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
         case RESTRAIN_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
         case ESCORT_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
-
 
         case FEED_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
@@ -219,6 +119,7 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Assign Armor & Weapons", GOSSIP_SENDER_MAIN, ASSIGN_ARMOR); //Allows player to dicatate what armor or wepaons NPC should use
             player->ADD_GOSSIP_ITEM(4, "Change Mount", GOSSIP_SENDER_MAIN, CHANGE_MOUNT); //Mount/Dismount a follower, boolean function
             player->ADD_GOSSIP_ITEM(4, "Pay Follower", GOSSIP_SENDER_MAIN, PAY_FOLLOWER); //Bi-weekly you will need to pay followers
+            player->ADD_GOSSIP_ITEM(4, "Mark for Death", GOSSIP_SENDER_MAIN, MARK_DEATH); //Marks the creature for death
             player->ADD_GOSSIP_ITEM(7, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING); //Patroling submenu for followers and guild NPCs
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->PlayerTalkClass->SendGossipMenu(123, item->GetGUID());
@@ -250,7 +151,8 @@ public:
         case PAY_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
-
+        case MARK_DEATH:
+            ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
 
         case PATROLLING:
             player->PlayerTalkClass->ClearMenus();
@@ -362,7 +264,7 @@ public:
             player->PlayerTalkClass->ClearMenus();
             break;
 
-    }
+      }
 
     }
 
@@ -389,8 +291,6 @@ public:
    }
   }
 };
-
-
 
 void AddSC_cs_menustone()
 {
