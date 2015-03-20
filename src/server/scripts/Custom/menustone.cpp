@@ -36,7 +36,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Spy:30|t Statistics", GOSSIP_SENDER_MAIN, STATISTICS);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
         case PLAYER:
             player->PlayerTalkClass->ClearMenus();
@@ -50,7 +49,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "Injure", GOSSIP_SENDER_MAIN, INJURE_PLAYER); //Injures the player with appling a debuff
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN,  MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
         case RELEASE_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
@@ -91,7 +89,6 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Injure Left Leg", GOSSIP_SENDER_MAIN, INJURE_LEFT_LEG); //Reduces running speed, if both legs are broken then 80% reduce speed
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
 
         case INJURE_HEAD:
@@ -139,7 +136,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "Patrols", GOSSIP_SENDER_MAIN, PATROLLING); //Patroling submenu for followers and guild NPCs
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
         case WAIT_FOLLOWER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
@@ -214,7 +210,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "Change Object Permissions", GOSSIP_SENDER_MAIN, CHANGE_OBJECT_PERMISSIONS);
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
 
         case SELECT_OBJECT:
@@ -238,7 +233,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-           break;
 
 
         case CHANGE_OBJECT_PERMISSIONS:
@@ -252,7 +246,6 @@ public:
             player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
         case ALLOW_PLAYER:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
@@ -286,7 +279,6 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Check your objects", GOSSIP_SENDER_MAIN, CHECK_OBJECTS); //Returns all objects you own and their permissions
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
-            break;
 
 
         case CENSUS:
