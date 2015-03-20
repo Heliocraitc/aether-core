@@ -295,11 +295,9 @@ public:
             ChatHandler(player->GetSession()).PSendSysMessage("This option is not implemented yet.");
             break;
 
-
         default:
             break;
       }
-      player->CLOSE_GOSSIP_MENU();
     }
 
   void OnGossipSelectCode(Player* player, Item* item, uint32 sender, uint32 action, char const* code) // Needed for selecting the player name in Game Object Template.
