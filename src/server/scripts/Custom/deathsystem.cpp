@@ -293,8 +293,8 @@ public:
                     {
                     uint32 victimGold = victim->GetMoney();
                     uint32 goldCoins, silverCoins, copperCoins;
-                    if((victimGold > 9)&&(!victim->HasAura(SPELL_CUSTOM_HIDDEN_POCKETS)))
-                    {
+                      if((victimGold > 9)&&(!victim->HasAura(SPELL_CUSTOM_HIDDEN_POCKETS)))
+                      {
                         uint32 stolenGold = (uint32)((float)victimGold * 0.1);
                         victim->ModifyMoney(-stolenGold);
                         killer->ModifyMoney(stolenGold);
@@ -306,16 +306,17 @@ public:
                         ChatHandler(victim->GetSession()).PSendSysMessage("You have been robbed for %ug, %us, %uc by %s.", goldCoins, silverCoins, copperCoins, killer->GetName().c_str());
                         ChatHandler(killer->GetSession()).PSendSysMessage("You have stolen %ug, %us, %uc from %s.", goldCoins, silverCoins, copperCoins, victim->GetName().c_str());
                         victim->CastSpell(victim, SPELL_CUSTOM_HIDDEN_POCKETS, true);
-                    }
-                    else
-                    {
+                      }
+                      else
+                      {
                         ChatHandler(killer->GetSession()).PSendSysMessage("You search %s's pockets, but it appears they have no coins on them.", victim->GetName().c_str());
-                    }
+                        ChatHandler(victim->GetSession()).PSendSysMessage("You are searched by %s', but it appears they cannot find your hidden money.", killer->GetName().c_str());
+                      }
                     }
                     else
                     {
-                        killer->RemoveSpellCooldown(SPELL_CUSTOM_KNOCKOUT);
-                        killer->GetSession()->SendAreaTriggerMessage("|cffFF0000You are too far away!|r");
+                      killer->RemoveSpellCooldown(SPELL_CUSTOM_KNOCKOUT);
+                      killer->GetSession()->SendAreaTriggerMessage("|cffFF0000You are too far away!|r");
                     }
                 }
                 else if(!victim && !killer->HasSpellCooldown(SPELL_CUSTOM_KNOCKOUT))

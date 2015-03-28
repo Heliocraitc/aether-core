@@ -31,7 +31,7 @@ public:
         GameObject* object = NULL;
         const WorldLocation* targetpos = gtargetpos;
 
-        QueryResult guidResult = WorldDatabase.PQuery("SELECT guid FROM gameobject WHERE postion_x = %f AND position_y = %f AND position_z = %f AND orientation = %f AND map = %u;", targetpos->GetPositionX(), targetpos->GetPositionY(), targetpos->GetPositionZ(), targetpos->GetOrientation(), targetpos->GetMapId());
+        QueryResult guidResult = WorldDatabase.PQuery("SELECT guid FROM gameobject WHERE position_x = %f AND position_y = %f AND position_z = %f AND orientation = %f AND map = %u;", targetpos->GetPositionX(), targetpos->GetPositionY(), targetpos->GetPositionZ(), targetpos->GetOrientation(), targetpos->GetMapId());
         Field* guidField = guidResult->Fetch();
         uint32 guidLow = guidField[0].GetUInt32();
 
@@ -65,7 +65,7 @@ public:
         player->AddItem(object->GetEntry(), 1);
 
         ChatHandler(player->GetSession()).PSendSysMessage(LANG_COMMAND_DELOBJMESSAGE, object->GetGUIDLow());
-        ChatHandler(player->GetSession()).PSendSysMessage("You have picked up your item!");
+        ChatHandler(player->GetSession()).PSendSysMessage("You have picked up your object!");
 
         return;
         }
