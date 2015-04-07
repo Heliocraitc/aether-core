@@ -233,12 +233,12 @@ public:
             player->PlayerTalkClass->ClearMenus();
             player->ADD_GOSSIP_ITEM_EXTENDED(0, "Rename.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1,"", 0, true);
             player->ADD_GOSSIP_ITEM(4, "Select Object", GOSSIP_SENDER_MAIN, SELECT_OBJECT);
-            player->ADD_GOSSIP_ITEM(4, "Edit X Coordinates", GOSSIP_SENDER_MAIN, EDIT_X);
-            player->ADD_GOSSIP_ITEM(4, "Edit Y Coordinates", GOSSIP_SENDER_MAIN, EDIT_Y);
-            player->ADD_GOSSIP_ITEM(4, "Edit Z Coordinates", GOSSIP_SENDER_MAIN, EDIT_Z);
-            player->ADD_GOSSIP_ITEM(4, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O);
-            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
+            player->ADD_GOSSIP_ITEM_EXTENDED(4, "Edit X Coordinates", GOSSIP_SENDER_MAIN, EDIT_X, "", 0, true);
+            player->ADD_GOSSIP_ITEM_EXTENDED(4, "Edit Y Coordinates", GOSSIP_SENDER_MAIN, EDIT_Y, "", 0, true);
+            player->ADD_GOSSIP_ITEM_EXTENDED(4, "Edit Z Coordinates", GOSSIP_SENDER_MAIN, EDIT_Z, "", 0, true);
+            player->ADD_GOSSIP_ITEM_EXTENDED(4, "Edit Orientation", GOSSIP_SENDER_MAIN, EDIT_O, "", 0, true);
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
             break;
 
@@ -251,8 +251,8 @@ public:
             player->ADD_GOSSIP_ITEM(4, "Allow Guild", GOSSIP_SENDER_MAIN, ALLOW_GUILD); //Allow guild to access the selected object, if no object then access to all objects
             player->ADD_GOSSIP_ITEM(4, "Allow Anyone", GOSSIP_SENDER_MAIN, ALLOW_ANYONE); //Allow anyone to access the selected object, if no object then access to all objects
             player->ADD_GOSSIP_ITEM(4, "Transfer Ownership", GOSSIP_SENDER_MAIN, TRANSFER_OWNERSHIP); // The targeted player wiil be the owner the new owner
-            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->ADD_GOSSIP_ITEM(7, "Main Menu", GOSSIP_SENDER_MAIN, MAIN_MENU);
+            player->ADD_GOSSIP_ITEM(7, "|TInterface\\ICONS\\Ability_Repair:30|t Objects", GOSSIP_SENDER_MAIN, OBJECTS);
             player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
             break;
 
@@ -333,6 +333,7 @@ public:
         break;
 
     default:
+        ChatHandler(player->GetSession()).PSendSysMessage("This option has defaulted! Report this bug!");
         break;
    }
   }

@@ -15,6 +15,36 @@
 #include "PoolMgr.h"
 #include "Opcodes.h"
 
+class cs_object_select : public SpellScriptLoader
+{
+public:
+  cs_object_select() : SpellScriptLoader("cs_object_select") {}
+    class cs_spell_select : public SpellScript
+    {
+      PrepareSpellScript(cs_spell_select);
+
+      SpellCastResult CheckCast()
+      {
+
+      }
+
+      void spell_select()
+      {
+
+      }
+
+      void Register()
+      {
+        AfterCast += SpellCastFn(cs_spell_select::spell_select);
+      }
+    };
+
+    SpellScript* GetSpellScript() const
+    {
+        return new cs_spell_select();
+    }
+};
+
 class cs_object_pickup : public SpellScriptLoader
 {
 public:
@@ -191,4 +221,5 @@ void AddSC_aether_objects()
     new cs_aether_object_place;
     new cs_aether_item_object;
     new cs_object_pickup;
+    new cs_object_select;
 }
